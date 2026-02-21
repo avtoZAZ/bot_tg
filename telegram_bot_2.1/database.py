@@ -2,15 +2,16 @@
 # Автор: avtoZAZ
 # Дата: 2025-11-11 19:15:42 UTC
 
+from contextlib import asynccontextmanager
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import String, Integer, Boolean, DateTime, Float, ForeignKey, Text, select, func
-from datetime import datetime
+from sqlalchemy import String, Integer, Boolean, DateTime, Float, ForeignKey, Text, select, func, delete
+from datetime import datetime, timedelta
 from typing import Optional, List
 import json
 
-# База даних
-DATABASE_URL = "sqlite+aiosqlite:///bot_data.db"
+# Імпорт URL бази даних з конфігурації
+from config import DATABASE_URL
 
 engine = create_async_engine(DATABASE_URL, echo=False)
 async_session_maker = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
@@ -170,6 +171,7 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
+@asynccontextmanager
 async def get_session() -> AsyncSession:
     """Отримати сесію бази даних"""
     async with async_session_maker() as session:
@@ -215,7 +217,7 @@ async def add_to_history(user_id: int, video_code: str):
     async with async_session_maker() as session:
         # Видалити старий запис якщо є
         await session.execute(
-            select(ViewHistory).where(
+            delete(ViewHistory).where(
                 ViewHistory.user_id == user_id,
                 ViewHistory.video_code == video_code
             )
