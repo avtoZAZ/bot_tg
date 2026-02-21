@@ -1,0 +1,1083 @@
+2025-11-11 21:50:22,430 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 21:50:22,431 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 21:50:22,431 - __main__ - INFO - Date: 2025-11-11 19:27:51 UTC
+2025-11-11 21:50:22,541 - __main__ - INFO - ✅ Database initialized
+2025-11-11 21:50:22,541 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 21:50:22,661 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 21:50:22,702 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 21:50:22,727 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 21:50:27,396 - aiogram.event - INFO - Update id=520405044 is handled. Duration 204 ms by bot id=8226742080
+2025-11-11 21:50:28,572 - __main__ - INFO - User 1309506590 selected language: uk
+2025-11-11 21:50:28,572 - aiogram.event - INFO - Update id=520405045 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 21:50:35,086 - aiogram.event - INFO - Update id=520405046 is handled. Duration 125 ms by bot id=8226742080
+2025-11-11 21:50:38,984 - __main__ - INFO - User 1309506590 viewed premium plans
+2025-11-11 21:50:38,985 - aiogram.event - INFO - Update id=520405047 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 21:50:41,628 - __main__ - INFO - Invoice sent to user 1309506590 for plan week
+2025-11-11 21:50:41,628 - aiogram.event - INFO - Update id=520405048 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 21:50:50,616 - aiogram.event - INFO - Update id=520405049 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 21:50:53,076 - aiogram.event - INFO - Update id=520405050 is handled. Duration 77 ms by bot id=8226742080
+2025-11-11 21:50:55,498 - aiogram.event - INFO - Update id=520405051 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 21:51:41,096 - aiogram.event - INFO - Update id=520405052 is handled. Duration 109 ms by bot id=8226742080
+2025-11-11 21:51:42,505 - __main__ - INFO - User 7621414923 selected language: ru
+2025-11-11 21:51:42,505 - aiogram.event - INFO - Update id=520405053 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 21:51:52,203 - aiogram.event - INFO - Update id=520405054 is handled. Duration 61 ms by bot id=8226742080
+2025-11-11 21:51:53,251 - aiogram.event - INFO - Update id=520405055 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 21:51:55,000 - aiogram.event - INFO - Update id=520405056 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 21:51:56,637 - aiogram.event - INFO - Update id=520405057 is handled. Duration 140 ms by bot id=8226742080
+2025-11-11 21:51:58,145 - aiogram.event - INFO - Update id=520405058 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 21:51:59,805 - aiogram.event - INFO - Update id=520405059 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 21:52:00,061 - aiogram.event - INFO - Update id=520405060 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 21:52:00,580 - aiogram.event - INFO - Update id=520405061 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 21:52:01,722 - aiogram.event - INFO - Update id=520405062 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 21:52:04,439 - aiogram.event - INFO - Update id=520405063 is handled. Duration 125 ms by bot id=8226742080
+2025-11-11 21:52:05,087 - aiogram.event - INFO - Update id=520405064 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 21:52:06,890 - aiogram.event - INFO - Update id=520405065 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 21:52:08,450 - aiogram.event - INFO - Update id=520405066 is handled. Duration 92 ms by bot id=8226742080
+2025-11-11 21:52:09,562 - aiogram.event - INFO - Update id=520405067 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 21:52:14,163 - aiogram.event - INFO - Update id=520405068 is handled. Duration 61 ms by bot id=8226742080
+2025-11-11 21:52:19,204 - aiogram.event - INFO - Update id=520405069 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 21:52:20,212 - aiogram.event - INFO - Update id=520405070 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 21:52:21,466 - aiogram.event - INFO - Update id=520405071 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 21:52:23,750 - aiogram.event - INFO - Update id=520405072 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 21:52:24,892 - aiogram.event - INFO - Update id=520405073 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 21:52:25,422 - aiogram.event - INFO - Update id=520405074 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 21:52:52,802 - aiogram.event - INFO - Update id=520405075 is handled. Duration 187 ms by bot id=8226742080
+2025-11-11 21:53:06,448 - aiogram.event - INFO - Update id=520405076 is handled. Duration 45 ms by bot id=8226742080
+2025-11-11 21:53:07,429 - aiogram.event - INFO - Update id=520405077 is handled. Duration 125 ms by bot id=8226742080
+2025-11-11 21:53:18,264 - __main__ - INFO - User 1309506590 started the bot
+2025-11-11 21:53:18,265 - aiogram.event - INFO - Update id=520405078 is handled. Duration 109 ms by bot id=8226742080
+2025-11-11 21:53:19,817 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 21:53:19,817 - aiogram.event - INFO - Update id=520405079 is handled. Duration 280 ms by bot id=8226742080
+2025-11-11 21:56:26,228 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 21:56:26,421 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 21:56:26,422 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 21:56:46,775 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 21:56:46,775 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 21:56:46,776 - __main__ - INFO - Date: 2025-11-11 19:27:51 UTC
+2025-11-11 21:56:46,786 - __main__ - INFO - ✅ Database initialized
+2025-11-11 21:56:46,786 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 21:56:46,892 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 21:56:46,930 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 21:56:46,952 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 21:56:54,838 - aiogram.event - INFO - Update id=520405080 is handled. Duration 187 ms by bot id=8226742080
+2025-11-11 21:56:56,135 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 21:56:56,136 - aiogram.event - INFO - Update id=520405081 is handled. Duration 109 ms by bot id=8226742080
+2025-11-11 21:56:59,703 - aiogram.event - INFO - Update id=520405082 is handled. Duration 45 ms by bot id=8226742080
+2025-11-11 21:57:03,194 - aiogram.event - INFO - Update id=520405083 is handled. Duration 77 ms by bot id=8226742080
+2025-11-11 21:57:16,936 - broadcast - INFO - Starting broadcast to 1 users
+2025-11-11 21:57:17,066 - broadcast - INFO - Broadcast completed: {'success': 1, 'failed': 0, 'blocked': 0, 'total': 1}
+2025-11-11 21:57:17,111 - admin_actions - INFO - Admin *** - BROADCAST_SENT
+2025-11-11 21:57:17,112 - aiogram.event - INFO - Update id=520405084 is handled. Duration 250 ms by bot id=8226742080
+2025-11-11 21:57:35,884 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 📤 Экспорт БД
+2025-11-11 21:57:35,975 - aiogram.event - INFO - Update id=520405085 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 21:57:39,622 - aiogram.event - INFO - Update id=520405086 is handled. Duration 139 ms by bot id=8226742080
+2025-11-11 21:58:20,716 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 21:58:20,933 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 21:58:20,934 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:18:29,584 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:18:29,585 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:18:29,585 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:18:29,595 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:18:29,595 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:18:29,703 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:18:29,744 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:18:29,768 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:18:36,670 - aiogram.event - INFO - Update id=520405087 is handled. Duration 311 ms by bot id=8226742080
+2025-11-11 22:18:37,789 - __main__ - INFO - User 1309506590 selected language: uk
+2025-11-11 22:18:37,790 - aiogram.event - INFO - Update id=520405088 is handled. Duration 125 ms by bot id=8226742080
+2025-11-11 22:18:38,737 - aiogram.event - INFO - Update id=520405089 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 22:18:40,702 - aiogram.event - INFO - Update id=520405090 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:18:43,522 - aiogram.event - INFO - Update id=520405091 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:18:44,271 - aiogram.event - INFO - Update id=520405092 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:18:44,479 - aiogram.event - INFO - Update id=520405093 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:18:45,258 - aiogram.event - INFO - Update id=520405094 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:18:45,426 - aiogram.event - INFO - Update id=520405095 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:18:45,628 - aiogram.event - INFO - Update id=520405096 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:18:52,737 - aiogram.event - INFO - Update id=520405097 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:19:11,148 - admin - INFO - Admin *** - VIDEO_UPLOAD_STARTED
+2025-11-11 22:19:11,149 - aiogram.event - INFO - Update id=520405098 is handled. Duration 156 ms by bot id=8226742080
+2025-11-11 22:19:12,954 - aiogram.event - INFO - Update id=520405099 is handled. Duration 45 ms by bot id=8226742080
+2025-11-11 22:19:17,629 - aiogram.event - INFO - Update id=520405100 is handled. Duration 155 ms by bot id=8226742080
+2025-11-11 22:19:19,442 - aiogram.event - INFO - Update id=520405101 is handled. Duration 155 ms by bot id=8226742080
+2025-11-11 22:19:22,606 - aiogram.event - INFO - Update id=520405102 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 22:19:24,595 - aiogram.event - INFO - Update id=520405103 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:19:25,447 - aiogram.event - INFO - Update id=520405104 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 22:19:26,232 - aiogram.event - INFO - Update id=520405105 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 22:19:27,907 - aiogram.event - INFO - Update id=520405106 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:19:30,315 - admin - INFO - Admin *** - VIDEO_UPLOADED
+2025-11-11 22:19:30,358 - aiogram.event - INFO - Update id=520405107 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 22:19:32,737 - admin - INFO - Admin *** - STATS_VIEWED
+2025-11-11 22:19:32,738 - aiogram.event - INFO - Update id=520405108 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:19:34,850 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - ✏️ Редагувати
+2025-11-11 22:19:34,892 - aiogram.event - INFO - Update id=520405109 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:19:37,682 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - ✏️ Редагувати
+2025-11-11 22:19:37,722 - aiogram.event - INFO - Update id=520405110 is handled. Duration 31 ms by bot id=8226742080
+2025-11-11 22:19:38,674 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - ✏️ Редагувати
+2025-11-11 22:19:38,722 - aiogram.event - INFO - Update id=520405111 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:19:40,039 - aiogram.event - INFO - Update id=520405112 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:19:44,619 - aiogram.event - INFO - Update id=520405113 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:19:46,427 - aiogram.event - INFO - Update id=520405114 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:19:47,505 - admin - INFO - Admin *** - PROMO_CREATED
+2025-11-11 22:19:47,505 - aiogram.event - INFO - Update id=520405115 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 22:19:53,709 - aiogram.event - INFO - Update id=520405116 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:19:54,832 - aiogram.event - INFO - Update id=520405117 is handled. Duration 77 ms by bot id=8226742080
+2025-11-11 22:19:57,186 - aiogram.event - INFO - Update id=520405118 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:19:59,406 - admin - INFO - Admin *** - STATS_VIEWED
+2025-11-11 22:19:59,407 - aiogram.event - INFO - Update id=520405119 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:20:00,664 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👥 Список адмінів
+2025-11-11 22:20:00,790 - aiogram.event - INFO - Update id=520405120 is handled. Duration 139 ms by bot id=8226742080
+2025-11-11 22:20:03,128 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👤 Додати адміна
+2025-11-11 22:20:03,170 - aiogram.event - INFO - Update id=520405121 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:20:04,517 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👤 Додати адміна
+2025-11-11 22:20:04,556 - aiogram.event - INFO - Update id=520405122 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:20:05,070 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👤 Додати адміна
+2025-11-11 22:20:05,112 - aiogram.event - INFO - Update id=520405123 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:20:05,286 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👤 Додати адміна
+2025-11-11 22:20:05,343 - aiogram.event - INFO - Update id=520405124 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:20:05,986 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👥 Список адмінів
+2025-11-11 22:20:06,119 - aiogram.event - INFO - Update id=520405125 is handled. Duration 139 ms by bot id=8226742080
+2025-11-11 22:20:06,621 - aiogram.event - INFO - Update id=520405126 is handled. Duration 109 ms by bot id=8226742080
+2025-11-11 22:20:09,410 - aiogram.event - INFO - Update id=520405127 is handled. Duration 140 ms by bot id=8226742080
+2025-11-11 22:20:11,416 - aiogram.event - INFO - Update id=520405128 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 22:20:12,998 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 🗑️ Видалити відео
+2025-11-11 22:20:13,065 - aiogram.event - INFO - Update id=520405129 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:20:15,292 - admin - INFO - Admin *** - ANALYTICS_VIEWED
+2025-11-11 22:20:15,292 - aiogram.event - INFO - Update id=520405130 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 22:20:16,535 - admin - INFO - Admin *** - STATS_VIEWED
+2025-11-11 22:20:16,535 - aiogram.event - INFO - Update id=520405131 is handled. Duration 187 ms by bot id=8226742080
+2025-11-11 22:20:18,814 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👥 Список адмінів
+2025-11-11 22:20:18,891 - aiogram.event - INFO - Update id=520405132 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:20:19,810 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👤 Додати адміна
+2025-11-11 22:20:19,852 - aiogram.event - INFO - Update id=520405133 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:20:21,489 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 📤 Експорт БД
+2025-11-11 22:20:21,539 - aiogram.event - INFO - Update id=520405134 is handled. Duration 61 ms by bot id=8226742080
+2025-11-11 22:20:36,110 - aiogram.event - INFO - Update id=520405135 is handled. Duration 32 ms by bot id=8226742080
+2025-11-11 22:20:37,660 - __main__ - INFO - User 7621414923 selected language: ru
+2025-11-11 22:20:37,660 - aiogram.event - INFO - Update id=520405136 is handled. Duration 79 ms by bot id=8226742080
+2025-11-11 22:20:39,843 - aiogram.event - INFO - Update id=520405137 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:20:40,859 - aiogram.event - INFO - Update id=520405138 is handled. Duration 172 ms by bot id=8226742080
+2025-11-11 22:20:42,026 - aiogram.event - INFO - Update id=520405139 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:45,677 - aiogram.event - INFO - Update id=520405140 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:20:46,624 - __main__ - INFO - User 7621414923 viewed premium plans
+2025-11-11 22:20:46,624 - aiogram.event - INFO - Update id=520405141 is handled. Duration 30 ms by bot id=8226742080
+2025-11-11 22:20:51,023 - aiogram.event - INFO - Update id=520405142 is handled. Duration 125 ms by bot id=8226742080
+2025-11-11 22:20:52,148 - aiogram.event - INFO - Update id=520405143 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:20:53,241 - aiogram.event - INFO - Update id=520405144 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 22:20:54,487 - aiogram.event - INFO - Update id=520405145 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:54,657 - aiogram.event - INFO - Update id=520405146 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:54,911 - security - WARNING - Spam detected from user 7621414923: 👤 Моя подписка
+2025-11-11 22:20:54,911 - security - WARNING - User 7621414923 - SPAM_DETECTED - 👤 Моя подписка
+2025-11-11 22:20:54,912 - security - WARNING - User 7621414923 blocked for 3600 seconds
+2025-11-11 22:20:54,912 - aiogram.event - INFO - Update id=520405147 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 22:20:55,666 - aiogram.event - INFO - Update id=520405148 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:56,832 - aiogram.event - INFO - Update id=520405149 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:57,066 - aiogram.event - INFO - Update id=520405150 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:58,109 - aiogram.event - INFO - Update id=520405151 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:58,370 - aiogram.event - INFO - Update id=520405152 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:58,564 - aiogram.event - INFO - Update id=520405153 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:20:59,894 - aiogram.event - INFO - Update id=520405154 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:21:32,980 - admin - INFO - Admin *** - STATS_VIEWED
+2025-11-11 22:21:32,980 - aiogram.event - INFO - Update id=520405155 is handled. Duration 110 ms by bot id=8226742080
+2025-11-11 22:21:34,448 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 🗑️ Видалити відео
+2025-11-11 22:21:34,535 - aiogram.event - INFO - Update id=520405156 is handled. Duration 79 ms by bot id=8226742080
+2025-11-11 22:21:45,709 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👥 Список адмінів
+2025-11-11 22:21:45,753 - aiogram.event - INFO - Update id=520405157 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:21:46,999 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👤 Додати адміна
+2025-11-11 22:21:47,040 - aiogram.event - INFO - Update id=520405158 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:21:48,521 - aiogram.event - INFO - Update id=520405159 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:21:50,816 - aiogram.event - INFO - Update id=520405160 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:21:52,024 - aiogram.event - INFO - Update id=520405161 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 22:21:53,844 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - ✏️ Редагувати
+2025-11-11 22:21:53,896 - aiogram.event - INFO - Update id=520405162 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:26:21,586 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 22:26:21,787 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:26:21,789 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:26:26,241 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:26:26,242 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:26:26,243 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:26:26,253 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:26:26,253 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:26:26,328 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:26:26,368 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:26:26,390 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:26:29,003 - aiogram.event - INFO - Update id=520405163 is handled. Duration 172 ms by bot id=8226742080
+2025-11-11 22:26:30,263 - __main__ - INFO - User 7621414923 selected language: ru
+2025-11-11 22:26:30,264 - aiogram.event - INFO - Update id=520405164 is handled. Duration 109 ms by bot id=8226742080
+2025-11-11 22:26:33,220 - aiogram.event - INFO - Update id=520405165 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:26:34,758 - __main__ - INFO - User 7621414923 viewed premium plans
+2025-11-11 22:26:34,759 - aiogram.event - INFO - Update id=520405166 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 22:26:35,888 - aiogram.event - INFO - Update id=520405167 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:26:36,907 - aiogram.event - INFO - Update id=520405168 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:26:42,132 - aiogram.event - INFO - Update id=520405169 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:26:43,735 - aiogram.event - INFO - Update id=520405170 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:26:44,833 - __main__ - INFO - User 7621414923 used /cancel from state: UserState:waiting_for_search
+2025-11-11 22:26:44,834 - aiogram.event - INFO - Update id=520405171 is handled. Duration 61 ms by bot id=8226742080
+2025-11-11 22:26:46,404 - aiogram.event - INFO - Update id=520405172 is handled. Duration 31 ms by bot id=8226742080
+2025-11-11 22:26:47,838 - aiogram.event - INFO - Update id=520405173 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:26:55,898 - aiogram.event - INFO - Update id=520405174 is handled. Duration 16 ms by bot id=8226742080
+2025-11-11 22:27:00,045 - aiogram.event - INFO - Update id=520405175 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:27:01,374 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 22:27:01,375 - aiogram.event - INFO - Update id=520405176 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:27:03,451 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 👤 Добавить админа
+2025-11-11 22:27:03,541 - aiogram.event - INFO - Update id=520405177 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:27:05,379 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - ⭐ Видати преміум
+2025-11-11 22:27:05,460 - aiogram.event - INFO - Update id=520405178 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:27:10,985 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - ✏️ Редактировать
+2025-11-11 22:27:11,116 - aiogram.event - INFO - Update id=520405179 is handled. Duration 139 ms by bot id=8226742080
+2025-11-11 22:27:13,258 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - ⭐ Видати преміум
+2025-11-11 22:27:13,452 - aiogram.event - INFO - Update id=520405180 is handled. Duration 203 ms by bot id=8226742080
+2025-11-11 22:27:39,322 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 22:27:39,507 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:27:39,508 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:29:12,097 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:29:12,098 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:29:12,099 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:29:12,108 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:29:12,109 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:29:12,185 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:29:12,226 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:29:12,251 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:29:14,906 - aiogram.event - INFO - Update id=520405181 is handled. Duration 171 ms by bot id=8226742080
+2025-11-11 22:29:16,133 - __main__ - INFO - User 7621414923 selected language: ru
+2025-11-11 22:29:16,134 - aiogram.event - INFO - Update id=520405182 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 22:29:17,367 - aiogram.event - INFO - Update id=520405183 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 22:29:18,911 - __main__ - INFO - User 7621414923 viewed premium plans
+2025-11-11 22:29:18,912 - aiogram.event - INFO - Update id=520405184 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:29:20,526 - aiogram.event - INFO - Update id=520405185 is handled. Duration 188 ms by bot id=8226742080
+2025-11-11 22:29:21,555 - aiogram.event - INFO - Update id=520405186 is handled. Duration 16 ms by bot id=8226742080
+2025-11-11 22:29:22,692 - aiogram.event - INFO - Update id=520405187 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:29:23,705 - aiogram.event - INFO - Update id=520405188 is handled. Duration 171 ms by bot id=8226742080
+2025-11-11 22:29:25,155 - __main__ - INFO - User 7621414923 used /cancel from state: UserState:waiting_for_search
+2025-11-11 22:29:25,156 - aiogram.event - INFO - Update id=520405189 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:29:30,086 - aiogram.event - INFO - Update id=520405190 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:29:31,731 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 22:29:31,732 - aiogram.event - INFO - Update id=520405191 is handled. Duration 406 ms by bot id=8226742080
+2025-11-11 22:29:33,268 - aiogram.event - INFO - Update id=520405192 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:29:34,679 - aiogram.event - INFO - Update id=520405193 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:35,969 - aiogram.event - INFO - Update id=520405194 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:38,274 - aiogram.event - INFO - Update id=520405195 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:40,732 - aiogram.event - INFO - Update id=520405196 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:43,184 - aiogram.event - INFO - Update id=520405197 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:45,352 - aiogram.event - INFO - Update id=520405198 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:45,582 - aiogram.event - INFO - Update id=520405199 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:29:45,777 - aiogram.event - INFO - Update id=520405200 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:45,955 - aiogram.event - INFO - Update id=520405201 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:29:51,842 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 22:29:52,010 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:29:52,012 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:29:56,333 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:29:56,333 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:29:56,334 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:29:56,344 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:29:56,344 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:29:56,451 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:29:56,503 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:29:56,525 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:30:03,322 - aiogram.event - INFO - Update id=520405202 is handled. Duration 234 ms by bot id=8226742080
+2025-11-11 22:30:04,721 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 22:30:04,722 - aiogram.event - INFO - Update id=520405203 is handled. Duration 265 ms by bot id=8226742080
+2025-11-11 22:30:07,754 - aiogram.event - INFO - Update id=520405204 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:30:09,652 - aiogram.event - INFO - Update id=520405205 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:30:10,299 - aiogram.event - INFO - Update id=520405206 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:30:13,097 - aiogram.event - INFO - Update id=520405207 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:30:13,260 - aiogram.event - INFO - Update id=520405208 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:30:13,434 - aiogram.event - INFO - Update id=520405209 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:30:13,726 - aiogram.event - INFO - Update id=520405210 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:30:13,843 - aiogram.event - INFO - Update id=520405211 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:19,123 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 22:34:19,314 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:34:19,316 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:34:23,863 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:34:23,864 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:34:23,865 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:34:23,875 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:34:23,875 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:34:23,956 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:34:23,999 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:34:24,022 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:34:27,994 - aiogram.event - INFO - Update id=520405212 is handled. Duration 171 ms by bot id=8226742080
+2025-11-11 22:34:29,160 - __main__ - INFO - User 7621414923 selected language: ru
+2025-11-11 22:34:29,161 - aiogram.event - INFO - Update id=520405213 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 22:34:30,630 - aiogram.event - INFO - Update id=520405214 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:34:32,018 - aiogram.event - INFO - Update id=520405215 is handled. Duration 77 ms by bot id=8226742080
+2025-11-11 22:34:35,698 - aiogram.event - INFO - Update id=520405216 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:34:36,693 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 22:34:36,694 - aiogram.event - INFO - Update id=520405217 is handled. Duration 139 ms by bot id=8226742080
+2025-11-11 22:34:38,628 - aiogram.event - INFO - Update id=520405218 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:34:39,723 - aiogram.event - INFO - Update id=520405219 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:40,507 - aiogram.event - INFO - Update id=520405220 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:40,726 - aiogram.event - INFO - Update id=520405221 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:42,273 - aiogram.event - INFO - Update id=520405222 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:43,094 - aiogram.event - INFO - Update id=520405223 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:43,540 - aiogram.event - INFO - Update id=520405224 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:44,865 - aiogram.event - INFO - Update id=520405225 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 22:34:45,072 - aiogram.event - INFO - Update id=520405226 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:34:45,263 - aiogram.event - INFO - Update id=520405227 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:35:05,474 - aiogram.event - INFO - Update id=520405228 is handled. Duration 16 ms by bot id=8226742080
+2025-11-11 22:40:40,826 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 22:40:40,986 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:40:40,987 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:40:44,746 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:40:44,746 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:40:44,747 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:40:44,757 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:40:44,758 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:40:44,863 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:40:44,904 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:40:44,931 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:40:47,829 - aiogram.event - INFO - Update id=520405229 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:40:52,310 - aiogram.event - INFO - Update id=520405230 is handled. Duration 172 ms by bot id=8226742080
+2025-11-11 22:40:53,182 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 22:40:53,183 - aiogram.event - INFO - Update id=520405231 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 22:40:56,507 - aiogram.event - INFO - Update id=520405232 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:40:57,711 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_admin_id
+2025-11-11 22:40:57,711 - aiogram.event - INFO - Update id=520405233 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:40:59,463 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 📊 Аналитика
+2025-11-11 22:40:59,501 - aiogram.event - INFO - Update id=520405234 is handled. Duration 31 ms by bot id=8226742080
+2025-11-11 22:41:00,838 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 📊 Аналитика
+2025-11-11 22:41:00,882 - aiogram.event - INFO - Update id=520405235 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:41:01,043 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 📊 Аналитика
+2025-11-11 22:41:01,095 - aiogram.event - INFO - Update id=520405236 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:41:02,059 - aiogram.event - INFO - Update id=520405237 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 22:41:03,273 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_edit_code
+2025-11-11 22:41:03,274 - aiogram.event - INFO - Update id=520405238 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:41:04,408 - aiogram.event - INFO - Update id=520405239 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:41:05,449 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_delete_code
+2025-11-11 22:41:05,449 - aiogram.event - INFO - Update id=520405240 is handled. Duration 187 ms by bot id=8226742080
+2025-11-11 22:41:06,342 - admin - INFO - Admin *** - STATS_VIEWED
+2025-11-11 22:41:06,343 - aiogram.event - INFO - Update id=520405241 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:41:08,099 - aiogram.event - INFO - Update id=520405242 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 22:41:09,277 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_admin_id
+2025-11-11 22:41:09,277 - aiogram.event - INFO - Update id=520405243 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:41:11,176 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 🎫 Промокоды
+2025-11-11 22:41:11,273 - aiogram.event - INFO - Update id=520405244 is handled. Duration 110 ms by bot id=8226742080
+2025-11-11 22:41:12,433 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 🎫 Промокоды
+2025-11-11 22:41:12,611 - aiogram.event - INFO - Update id=520405245 is handled. Duration 171 ms by bot id=8226742080
+2025-11-11 22:41:12,626 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 🎫 Промокоды
+2025-11-11 22:41:12,782 - aiogram.event - INFO - Update id=520405246 is handled. Duration 156 ms by bot id=8226742080
+2025-11-11 22:41:13,066 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 🎫 Промокоды
+2025-11-11 22:41:13,133 - aiogram.event - INFO - Update id=520405247 is handled. Duration 77 ms by bot id=8226742080
+2025-11-11 22:41:13,275 - security - WARNING - User 1309506590 - INVALID_CODE_FORMAT - 🎫 Промокоды
+2025-11-11 22:41:13,334 - aiogram.event - INFO - Update id=520405248 is handled. Duration 61 ms by bot id=8226742080
+2025-11-11 22:41:13,463 - security - WARNING - Spam detected from user 1309506590: 🎫 Промокоды
+2025-11-11 22:41:13,463 - security - WARNING - User 1309506590 - SPAM_DETECTED - 🎫 Промокоды
+2025-11-11 22:41:13,464 - security - WARNING - User 1309506590 blocked for 3600 seconds
+2025-11-11 22:41:13,464 - aiogram.event - INFO - Update id=520405249 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:13,762 - aiogram.event - INFO - Update id=520405250 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:13,989 - aiogram.event - INFO - Update id=520405251 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 22:41:14,224 - aiogram.event - INFO - Update id=520405252 is handled. Duration 16 ms by bot id=8226742080
+2025-11-11 22:41:14,950 - aiogram.event - INFO - Update id=520405253 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:15,923 - aiogram.event - INFO - Update id=520405254 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:16,508 - aiogram.event - INFO - Update id=520405255 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:17,555 - aiogram.event - INFO - Update id=520405256 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:17,813 - aiogram.event - INFO - Update id=520405257 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:18,310 - aiogram.event - INFO - Update id=520405258 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:18,682 - aiogram.event - INFO - Update id=520405259 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:41:51,586 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 22:41:51,844 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:41:51,845 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:41:56,509 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:41:56,510 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:41:56,511 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:41:56,520 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:41:56,521 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:41:56,599 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:41:56,639 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:41:56,662 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:41:58,539 - aiogram.event - INFO - Update id=520405260 is handled. Duration 203 ms by bot id=8226742080
+2025-11-11 22:41:59,896 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 22:41:59,896 - aiogram.event - INFO - Update id=520405261 is handled. Duration 156 ms by bot id=8226742080
+2025-11-11 22:42:02,713 - aiogram.event - INFO - Update id=520405262 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:42:03,893 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_video
+2025-11-11 22:42:03,894 - aiogram.event - INFO - Update id=520405263 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 22:42:08,014 - aiogram.event - INFO - Update id=520405264 is handled. Duration 62 ms by bot id=8226742080
+2025-11-11 22:42:14,242 - aiogram.event - INFO - Update id=520405265 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:42:17,137 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_admin_id
+2025-11-11 22:42:17,137 - aiogram.event - INFO - Update id=520405266 is handled. Duration 77 ms by bot id=8226742080
+2025-11-11 22:42:19,020 - aiogram.event - INFO - Update id=520405267 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 22:42:20,317 - aiogram.event - INFO - Update id=520405268 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 22:42:22,131 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_grant_premium_user
+2025-11-11 22:42:22,131 - aiogram.event - INFO - Update id=520405269 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:42:27,399 - aiogram.event - INFO - Update id=520405270 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:42:30,877 - aiogram.event - INFO - Update id=520405271 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 22:42:32,477 - aiogram.event - INFO - Update id=520405272 is not handled. Duration 63 ms by bot id=8226742080
+2025-11-11 22:42:32,477 - aiogram.event - ERROR - Cause exception while process update id=520405272 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1011, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2570, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 22:42:40,509 - aiogram.event - INFO - Update id=520405273 is not handled. Duration 140 ms by bot id=8226742080
+2025-11-11 22:42:40,510 - aiogram.event - ERROR - Cause exception while process update id=520405273 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1011, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2570, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 22:42:41,480 - aiogram.event - INFO - Update id=520405274 is not handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:42:41,480 - aiogram.event - ERROR - Cause exception while process update id=520405274 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1011, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2570, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 22:42:42,350 - aiogram.event - INFO - Update id=520405275 is not handled. Duration 110 ms by bot id=8226742080
+2025-11-11 22:42:42,351 - aiogram.event - ERROR - Cause exception while process update id=520405275 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1011, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2570, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 22:42:42,999 - aiogram.event - INFO - Update id=520405276 is not handled. Duration 78 ms by bot id=8226742080
+2025-11-11 22:42:43,000 - aiogram.event - ERROR - Cause exception while process update id=520405276 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1011, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2570, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 22:42:46,141 - aiogram.event - INFO - Update id=520405277 is not handled. Duration 108 ms by bot id=8226742080
+2025-11-11 22:42:46,141 - aiogram.event - ERROR - Cause exception while process update id=520405277 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1011, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2570, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 22:51:05,817 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 22:51:06,001 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:51:06,002 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 22:51:14,149 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 22:51:14,149 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 22:51:14,149 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 22:51:14,159 - __main__ - INFO - ✅ Database initialized
+2025-11-11 22:51:14,159 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 22:51:14,266 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 22:51:14,308 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 22:51:14,331 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 22:51:16,628 - aiogram.event - INFO - Update id=520405278 is handled. Duration 203 ms by bot id=8226742080
+2025-11-11 22:51:17,694 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 22:51:17,695 - aiogram.event - INFO - Update id=520405279 is handled. Duration 156 ms by bot id=8226742080
+2025-11-11 22:51:19,563 - aiogram.event - INFO - Update id=520405280 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:51:20,583 - aiogram.event - INFO - Update id=520405281 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:51:21,517 - aiogram.event - INFO - Update id=520405282 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:51:21,697 - aiogram.event - INFO - Update id=520405283 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:51:21,896 - aiogram.event - INFO - Update id=520405284 is handled. Duration 16 ms by bot id=8226742080
+2025-11-11 22:51:22,085 - aiogram.event - INFO - Update id=520405285 is handled. Duration 15 ms by bot id=8226742080
+2025-11-11 22:51:32,107 - aiogram.event - INFO - Update id=520405286 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:52:22,771 - aiogram.event - INFO - Update id=520405287 is handled. Duration 188 ms by bot id=8226742080
+2025-11-11 22:52:23,684 - __main__ - INFO - User 7621414923 selected language: ru
+2025-11-11 22:52:23,684 - aiogram.event - INFO - Update id=520405288 is handled. Duration 141 ms by bot id=8226742080
+2025-11-11 22:52:24,942 - aiogram.event - INFO - Update id=520405289 is handled. Duration 109 ms by bot id=8226742080
+2025-11-11 22:52:26,034 - aiogram.event - INFO - Update id=520405290 is handled. Duration 93 ms by bot id=8226742080
+2025-11-11 22:52:27,951 - aiogram.event - INFO - Update id=520405291 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:52:28,680 - __main__ - INFO - User 7621414923 viewed premium plans
+2025-11-11 22:52:28,680 - aiogram.event - INFO - Update id=520405292 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 22:53:56,923 - aiogram.event - INFO - Update id=520405293 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 22:53:57,433 - aiogram.event - INFO - Update id=520405294 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:01:48,984 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 23:01:49,122 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:01:49,129 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 23:03:00,280 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 23:03:00,280 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 23:03:00,281 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 23:03:00,291 - __main__ - INFO - ✅ Database initialized
+2025-11-11 23:03:00,291 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 23:03:00,400 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 23:03:00,439 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 23:03:00,463 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:03:06,578 - __main__ - INFO - User 1309506590 cancelled action from state: None
+2025-11-11 23:03:06,579 - aiogram.event - INFO - Update id=520405295 is handled. Duration 203 ms by bot id=8226742080
+2025-11-11 23:03:12,289 - aiogram.event - INFO - Update id=520405296 is handled. Duration 156 ms by bot id=8226742080
+2025-11-11 23:03:21,276 - aiogram.event - INFO - Update id=520405297 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:03:29,130 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_admin_id
+2025-11-11 23:03:29,130 - aiogram.event - INFO - Update id=520405298 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 23:03:32,210 - aiogram.event - INFO - Update id=520405299 is handled. Duration 61 ms by bot id=8226742080
+2025-11-11 23:03:34,607 - aiogram.event - INFO - Update id=520405300 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:03:35,898 - aiogram.event - INFO - Update id=520405301 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:03:39,908 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_admin_id
+2025-11-11 23:03:39,908 - aiogram.event - INFO - Update id=520405302 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 23:03:41,841 - aiogram.event - INFO - Update id=520405303 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 23:03:42,913 - aiogram.event - INFO - Update id=520405304 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:03:45,954 - __main__ - INFO - User 1309506590 cancelled action from state: UserState:waiting_for_grant_premium_user
+2025-11-11 23:03:45,955 - aiogram.event - INFO - Update id=520405305 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 23:03:52,553 - aiogram.event - INFO - Update id=520405306 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 23:03:54,183 - aiogram.event - INFO - Update id=520405307 is handled. Duration 63 ms by bot id=8226742080
+2025-11-11 23:03:55,714 - aiogram.event - INFO - Update id=520405308 is not handled. Duration 61 ms by bot id=8226742080
+2025-11-11 23:03:55,715 - aiogram.event - ERROR - Cause exception while process update id=520405308 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1008, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2487, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(text=text, filter_premium=filter_premium)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 23:03:57,423 - aiogram.event - INFO - Update id=520405309 is not handled. Duration 46 ms by bot id=8226742080
+2025-11-11 23:03:57,424 - aiogram.event - ERROR - Cause exception while process update id=520405309 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1008, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2487, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(text=text, filter_premium=filter_premium)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 23:04:00,905 - aiogram.event - INFO - Update id=520405310 is not handled. Duration 46 ms by bot id=8226742080
+2025-11-11 23:04:00,905 - aiogram.event - ERROR - Cause exception while process update id=520405310 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1008, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2487, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(text=text, filter_premium=filter_premium)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 23:05:05,248 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 23:05:05,499 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:05:05,501 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 23:05:09,990 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 23:05:09,991 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 23:05:09,991 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 23:05:10,001 - __main__ - INFO - ✅ Database initialized
+2025-11-11 23:05:10,001 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 23:05:10,080 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 23:05:10,118 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 23:05:10,142 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:05:13,175 - aiogram.event - INFO - Update id=520405311 is handled. Duration 186 ms by bot id=8226742080
+2025-11-11 23:05:14,318 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 23:05:14,319 - aiogram.event - INFO - Update id=520405312 is handled. Duration 109 ms by bot id=8226742080
+2025-11-11 23:05:17,636 - aiogram.event - INFO - Update id=520405313 is handled. Duration 46 ms by bot id=8226742080
+2025-11-11 23:05:22,395 - aiogram.event - INFO - Update id=520405314 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:05:25,624 - aiogram.event - INFO - Update id=520405315 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:05:26,415 - aiogram.event - INFO - Update id=520405316 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:05:26,567 - aiogram.event - INFO - Update id=520405317 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 23:05:26,759 - aiogram.event - INFO - Update id=520405318 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:05:26,898 - aiogram.event - INFO - Update id=520405319 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:05:27,064 - aiogram.event - INFO - Update id=520405320 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:05:27,234 - aiogram.event - INFO - Update id=520405321 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:05:27,411 - aiogram.event - INFO - Update id=520405322 is handled. Duration 14 ms by bot id=8226742080
+2025-11-11 23:05:27,600 - aiogram.event - INFO - Update id=520405323 is handled. Duration 16 ms by bot id=8226742080
+2025-11-11 23:06:05,938 - aiogram.event - INFO - Update id=520405324 is handled. Duration 94 ms by bot id=8226742080
+2025-11-11 23:06:07,470 - __main__ - INFO - User 7621414923 selected language: ru
+2025-11-11 23:06:07,470 - aiogram.event - INFO - Update id=520405325 is handled. Duration 280 ms by bot id=8226742080
+2025-11-11 23:06:42,188 - aiogram.event - INFO - Update id=520405326 is handled. Duration 188 ms by bot id=8226742080
+2025-11-11 23:06:43,860 - aiogram.event - INFO - Update id=520405327 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:06:44,777 - aiogram.event - INFO - Update id=520405328 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:06:44,981 - aiogram.event - INFO - Update id=520405329 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:28:22,007 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 23:28:22,167 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:28:22,169 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 23:28:26,717 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 23:28:26,718 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 23:28:26,719 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 23:28:26,729 - __main__ - INFO - ✅ Database initialized
+2025-11-11 23:28:26,730 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 23:28:26,838 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 23:28:26,880 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 23:28:26,902 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:28:36,127 - aiogram.event - INFO - Update id=520405330 is handled. Duration 171 ms by bot id=8226742080
+2025-11-11 23:28:37,042 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 23:28:37,043 - aiogram.event - INFO - Update id=520405331 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 23:28:38,836 - aiogram.event - INFO - Update id=520405332 is handled. Duration 108 ms by bot id=8226742080
+2025-11-11 23:28:39,747 - aiogram.event - INFO - Update id=520405333 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:28:40,699 - aiogram.event - INFO - Update id=520405334 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:28:42,056 - aiogram.event - INFO - Update id=520405335 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:28:43,738 - aiogram.event - INFO - Update id=520405336 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:28:44,471 - aiogram.event - INFO - Update id=520405337 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:28:48,293 - aiogram.event - INFO - Update id=520405338 is handled. Duration 0 ms by bot id=8226742080
+2025-11-11 23:28:52,135 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 23:28:52,399 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:28:52,401 - __main__ - INFO - 🛑 Bot stopped by user
+2025-11-11 23:28:56,378 - __main__ - INFO - 🚀 Bot starting...
+2025-11-11 23:28:56,378 - __main__ - INFO - Current user: avtoZAZ
+2025-11-11 23:28:56,379 - __main__ - INFO - Date: 2025-11-11 20:12:30 UTC
+2025-11-11 23:28:56,390 - __main__ - INFO - ✅ Database initialized
+2025-11-11 23:28:56,390 - __main__ - INFO - ✅ Cache cleanup task started
+2025-11-11 23:28:56,472 - __main__ - INFO - ✅ Started as @kodfugabot
+2025-11-11 23:28:56,516 - aiogram.dispatcher - INFO - Start polling
+2025-11-11 23:28:56,540 - aiogram.dispatcher - INFO - Run polling for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:28:57,559 - aiogram.event - INFO - Update id=520405339 is handled. Duration 172 ms by bot id=8226742080
+2025-11-11 23:28:58,444 - __main__ - INFO - User 1309506590 selected language: ru
+2025-11-11 23:28:58,444 - aiogram.event - INFO - Update id=520405340 is handled. Duration 125 ms by bot id=8226742080
+2025-11-11 23:28:59,936 - aiogram.event - INFO - Update id=520405341 is handled. Duration 47 ms by bot id=8226742080
+2025-11-11 23:29:01,318 - aiogram.event - INFO - Update id=520405342 is handled. Duration 78 ms by bot id=8226742080
+2025-11-11 23:29:02,480 - aiogram.event - INFO - Update id=520405343 is not handled. Duration 141 ms by bot id=8226742080
+2025-11-11 23:29:02,481 - aiogram.event - ERROR - Cause exception while process update id=520405343 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1034, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2534, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(text=text, filter_premium=filter_premium)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 23:29:03,121 - aiogram.event - INFO - Update id=520405344 is not handled. Duration 109 ms by bot id=8226742080
+2025-11-11 23:29:03,122 - aiogram.event - ERROR - Cause exception while process update id=520405344 by bot id=8226742080
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+Traceback (most recent call last):
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 1034, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\AppData\Local\Programs\Python\Python311\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\pirat\OneDrive\Desktop\kod\telegram_bot_2.1\bot.py", line 2534, in handle_broadcast_message
+    stats = await broadcast_manager.send_broadcast(text=text, filter_premium=filter_premium)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send_broadcast'
+2025-11-11 23:42:31,207 - aiogram.dispatcher - INFO - Polling stopped
+2025-11-11 23:42:31,461 - aiogram.dispatcher - INFO - Polling stopped for bot @kodfugabot id=8226742080 - 'kodfuga'
+2025-11-11 23:42:31,463 - __main__ - INFO - 🛑 Bot stopped by user

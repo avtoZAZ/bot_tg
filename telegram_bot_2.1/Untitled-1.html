@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор блок-схем</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #code { width: 100%; height: 150px; }
+        #diagram { border: 1px solid #ccc; margin-top: 20px; min-height: 200px; }
+    </style>
+
+    <!-- Include Raphaël (required dependency) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <!-- Include flowchart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.18.0/flowchart.min.js"></script>
+</head>
+<body>
+<h2>Блок-схема из текста (flowchart.js)</h2>
+
+<p id="status" style="color: blue;">Проверка загрузки flowchart.js...</p>
+
+<textarea id="code">
+// пример простой схемы
+st=>start: Start
+op1=>operation: Step 1
+op2=>operation: Step 2
+e=>end: End
+
+st->op1->op2->e
+</textarea>
+<br>
+<button onclick="renderDiagram()">Построить схему</button>
+
+<div id="diagram"></div>
+
+<script>
+// Проверка: доступен ли flowchart вообще
+window.addEventListener('load', function () {
+    const status = document.getElementById('status');
+    if (typeof flowchart === 'undefined') {
+        status.style.color = 'red';
+        status.textContent = 'flowchart.js НЕ загрузился (flowchart is undefined)';
+    } else {
+        status.style.color = 'green';
+        status.textContent = 'flowchart.js успешно загружен';
+    }
+});
+
+function renderDiagram() {
+    const code = document.getElementById('code').value;
+    const diagramDiv = document.getElementById('diagram');
+    diagramDiv.innerHTML = '';
+
+    try {
+        const chart = flowchart.parse(code);
+        chart.drawSVG('diagram', {
+            'line-width': 2,
+            'maxWidth': 800,
+            'line-length': 50,
+            'text-margin': 6,
+            'font-size': 12,
+            'font-color': '#000',
+            'line-color': '#555',
+            'element-color': '#555',
+            'fill': 'white',
+            'yes-text': 'да',
+            'no-text': 'нет',
+            'arrow-end': 'block',
+            'scale': 1
+        });
+    } catch (e) {
+        diagramDiv.innerHTML = '<pre style="color:red;">Ошибка в описании схемы:\n' + e + '</pre>';
+        console.error(e);
+    }
+}
+</script>
+</body>
+</html>
