@@ -999,10 +999,10 @@ def get_promo_keyboard(user_id: int) -> InlineKeyboardMarkup:
         )],
     ])
 
-def get_cancel_keyboard() -> ReplyKeyboardMarkup:
+def get_cancel_keyboard(user_id: int) -> ReplyKeyboardMarkup:
     """Клавіатура зі скасуванням"""
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text="❌ Скасувати")]],
+        keyboard=[[KeyboardButton(text=get_text(user_id, "cancel_button"))]],
         resize_keyboard=True
     )
 
@@ -1038,22 +1038,17 @@ storage = MemoryStorage()
 bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher(storage=storage)
 
-storage = MemoryStorage()
-bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
-dp = Dispatcher(storage=storage)
-
 # Додати middleware
 dp.message.middleware(BanCheckMiddleware())
 dp.callback_query.middleware(BanCheckMiddleware())
+# Створити broadcast manager
+from broadcast import BroadcastManager
 # Инициализация менеджера рассылок (фикс падений из-за None)
 broadcast_manager = BroadcastManager(bot)
 # Необязательно: синхронизируем глобальную ссылку модуля broadcast
 import broadcast as _broadcast
 _broadcast.broadcast_manager = broadcast_manager
 logger.info("✅ BroadcastManager initialized")
-
-# Створити broadcast manager
-from broadcast import BroadcastManager
 
 # ==================== КОМАНДА /CANCEL ====================
 
@@ -1232,7 +1227,7 @@ async def handle_text_input(message: Message, state: FSMContext):
         if text in ["📹 Завантажити відео", "📹 Загрузить видео", "📹 Upload Video"]:
             await message.answer(
                 get_text(user_id, "send_video_prompt"),
-                reply_markup=get_cancel_keyboard()
+                reply_markup=get_cancel_keyboard(user_id)
             )
             await state.set_state(UserState.waiting_for_video)
             return
@@ -1251,7 +1246,7 @@ async def handle_text_input(message: Message, state: FSMContext):
         if text in ["🗑️ Видалити відео", "🗑️ Удалить видео", "🗑️ Delete Video"]:
             await message.answer(
                 "🗑️ Введіть код відео для видалення:",
-                reply_markup=get_cancel_keyboard()
+                reply_markup=get_cancel_keyboard(user_id)
             )
             await state.set_state(UserState.waiting_for_delete_code)
             return
@@ -1260,7 +1255,7 @@ async def handle_text_input(message: Message, state: FSMContext):
         if text in ["✏️ Редагувати", "✏️ Редактировать", "✏️ Edit Metadata"]:
             await message.answer(
                 "✏️ Введіть код відео для редагування:",
-                reply_markup=get_cancel_keyboard()
+                reply_markup=get_cancel_keyboard(user_id)
             )
             await state.set_state(UserState.waiting_for_edit_code)
             return
@@ -1295,7 +1290,7 @@ async def handle_text_input(message: Message, state: FSMContext):
         if text in ["👤 Додати адміна", "👤 Добавить админа", "👤 Add Admin"]:
             await message.answer(
                 "👤 Введіть Telegram ID користувача для надання прав адміна:",
-                reply_markup=get_cancel_keyboard()
+                reply_markup=get_cancel_keyboard(user_id)
             )
             await state.set_state(UserState.waiting_for_admin_id)
             return
@@ -1309,7 +1304,7 @@ async def handle_text_input(message: Message, state: FSMContext):
         if text in ["⭐ Видати преміум", "⭐ Выдать премиум", "⭐ Grant Premium"]:
             await message.answer(
                 "⭐ Введіть Telegram ID користувача для видачі преміуму:",
-                reply_markup=get_cancel_keyboard()
+                reply_markup=get_cancel_keyboard(user_id)
             )
             await state.set_state(UserState.waiting_for_grant_premium_user)
             return
@@ -1325,7 +1320,7 @@ async def handle_text_input(message: Message, state: FSMContext):
     if text in ["🔍 Пошук", "🔍 Поиск", "🔍 Search"]:
         await message.answer(
             get_text(user_id, "enter_search_query"),
-            reply_markup=get_cancel_keyboard()
+            reply_markup=get_cancel_keyboard(user_id)
         )
         await state.set_state(UserState.waiting_for_search)
         return
@@ -1960,7 +1955,7 @@ async def handle_video_premium_choice(callback: CallbackQuery, state: FSMContext
         await callback.message.delete()
         await callback.message.answer(
             get_text(callback.from_user.id, "enter_title"),
-            reply_markup=get_cancel_keyboard()
+            reply_markup=get_cancel_keyboard(callback.from_user.id)
         )
         await state.set_state(UserState.waiting_for_title)
 
@@ -1974,7 +1969,7 @@ async def handle_series_choice(callback: CallbackQuery, state: FSMContext):
         await callback.message.delete()
         await callback.message.answer(
             get_text(callback.from_user.id, "enter_series_name"),
-            reply_markup=get_cancel_keyboard()
+            reply_markup=get_cancel_keyboard(callback.from_user.id)
         )
         await state.set_state(UserState.waiting_for_series_name)
     else:
@@ -1982,7 +1977,7 @@ async def handle_series_choice(callback: CallbackQuery, state: FSMContext):
         await callback.message.delete()
         await callback.message.answer(
             get_text(callback.from_user.id, "enter_title"),
-            reply_markup=get_cancel_keyboard()
+            reply_markup=get_cancel_keyboard(callback.from_user.id)
         )
         await state.set_state(UserState.waiting_for_title)
 
@@ -2004,7 +1999,7 @@ async def handle_series_name(message: Message, state: FSMContext):
     await state.update_data(series_name=series_name)
     await message.answer(
         get_text(user_id, "enter_season_number"),
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(user_id)
     )
     await state.set_state(UserState.waiting_for_season)
 
@@ -2025,7 +2020,7 @@ async def handle_season(message: Message, state: FSMContext):
         
         await message.answer(
             get_text(user_id, "enter_episode_number"),
-            reply_markup=get_cancel_keyboard()
+            reply_markup=get_cancel_keyboard(user_id)
         )
         await state.set_state(UserState.waiting_for_episode)
     except ValueError:
@@ -2048,7 +2043,7 @@ async def handle_episode(message: Message, state: FSMContext):
         
         await message.answer(
             get_text(user_id, "enter_title"),
-            reply_markup=get_cancel_keyboard()
+            reply_markup=get_cancel_keyboard(user_id)
         )
         await state.set_state(UserState.waiting_for_title)
     except ValueError:
@@ -2068,7 +2063,7 @@ async def handle_title(message: Message, state: FSMContext):
     
     await message.answer(
         get_text(user_id, "enter_year"),
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(user_id)
     )
     await state.set_state(UserState.waiting_for_year)
 
@@ -2086,7 +2081,7 @@ async def handle_year(message: Message, state: FSMContext):
     
     await message.answer(
         get_text(user_id, "enter_genre"),
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(user_id)
     )
     await state.set_state(UserState.waiting_for_genre)
 
@@ -2104,7 +2099,7 @@ async def handle_genre(message: Message, state: FSMContext):
     
     await message.answer(
         get_text(user_id, "enter_description"),
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(user_id)
     )
     await state.set_state(UserState.waiting_for_description)
 
@@ -2122,7 +2117,7 @@ async def handle_description(message: Message, state: FSMContext):
     
     await message.answer(
         get_text(user_id, "send_poster"),
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(user_id)
     )
     await state.set_state(UserState.waiting_for_poster)
 
@@ -2135,7 +2130,7 @@ async def handle_poster_upload(message: Message, state: FSMContext):
     
     await message.answer(
         get_text(message.from_user.id, "enter_custom_code_prompt"),
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(message.from_user.id)
     )
     await state.set_state(UserState.waiting_for_custom_code)
 
@@ -2151,7 +2146,7 @@ async def handle_skip_poster(message: Message, state: FSMContext):
     if message.text.strip() == "/skip":
         await message.answer(
             get_text(message.from_user.id, "enter_custom_code_prompt"),
-            reply_markup=get_cancel_keyboard()
+            reply_markup=get_cancel_keyboard(user_id)
         )
         await state.set_state(UserState.waiting_for_custom_code)
 
@@ -2870,7 +2865,7 @@ async def handle_edit_code(message: Message, state: FSMContext):
         f"Що редагувати?\n\n"
         f"1️⃣ - Назва\n2️⃣ - Рік\n3️⃣ - Жанр\n4️⃣ - Опис\n5️⃣ - Преміум статус\n\n"
         f"Введіть номер поля:",
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(user_id)
     )
     await state.set_state(UserState.waiting_for_edit_field)
 
@@ -2895,9 +2890,9 @@ async def handle_edit_field(message: Message, state: FSMContext):
     await state.update_data(edit_field=field)
     
     if field == "is_premium":
-        await message.answer("⭐ Преміум статус:\n\n1 - Так\n0 - Ні", reply_markup=get_cancel_keyboard())
+        await message.answer("⭐ Преміум статус:\n\n1 - Так\n0 - Ні", reply_markup=get_cancel_keyboard(user_id))
     else:
-        await message.answer(f"✏️ Введіть нове значення для {field}:", reply_markup=get_cancel_keyboard())
+        await message.answer(f"✏️ Введіть нове значення для {field}:", reply_markup=get_cancel_keyboard(user_id))
     
     await state.set_state(UserState.waiting_for_edit_value)
 
@@ -3008,7 +3003,7 @@ async def handle_grant_premium_user(message: Message, state: FSMContext):
         f"Оберіть тариф:\n\n"
         f"1️⃣ - Тижневий (7 днів)\n2️⃣ - Місячний (30 днів)\n3️⃣ - Річний (365 днів)\n\n"
         f"Або введіть кількість днів вручну:",
-        reply_markup=get_cancel_keyboard()
+        reply_markup=get_cancel_keyboard(user_id)
     )
     await state.set_state(UserState.waiting_for_grant_premium_plan)
 
