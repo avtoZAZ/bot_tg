@@ -26,7 +26,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.default import DefaultBotProperties
 from aiogram.dispatcher.middlewares.base import BaseMiddleware
 
-from sqlalchemy import select, func, and_, or_, desc
+from sqlalchemy import select, func, and_, or_, desc, delete as sa_delete
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
 # Локальні імпорти
@@ -37,12 +37,13 @@ from config import (
     REFERRAL_ENABLED, PROMO_CODES_ENABLED, SERIES_NOTIFICATIONS_ENABLED,
     RATINGS_ENABLED, ANALYTICS_ENABLED, SAVE_SEARCH_QUERIES, TRACK_AD_CLICKS,
     ALLOWED_DOMAINS, VALIDATE_AD_URLS, LOG_SENSITIVE_DATA, PREMIUM_PLANS,
-    TOP_WEEKLY_LIMIT, LOGS_DIR
+    TOP_WEEKLY_LIMIT, LOGS_DIR, DAILY_RECOMMENDATIONS_ENABLED, DAILY_RECOMMENDATIONS_HOUR
 )
 
 from database import (
     init_db, async_session_maker, User, Video, ViewHistory, Favorite,
     Rating, SeriesSubscription, PromoCode, SearchQuery, AdClick, Payment,
+    Playlist, PlaylistItem, Review, Achievement,
     get_or_create_user, add_to_history, get_user_history, toggle_favorite,
     is_favorite, get_user_favorites, rate_video, subscribe_to_series,
     get_series_subscribers, log_search_query, log_ad_click
@@ -89,6 +90,9 @@ MAX_VIDEO_SIZE = 2 * 1024 * 1024 * 1024  # 2 GB
 
 # Кеш мов користувачів
 user_languages_cache = {}
+
+# Кеш жанрів для навігації
+_genre_cache: Dict[int, list] = {}
 
 # ==================== ТЕКСТИ ДЛЯ ВСІХ МОВ ====================
 
@@ -262,6 +266,60 @@ You don't have an active subscription.
 ⭐ Premium users: {premium_users}
 💰 Revenue: {revenue} ⭐
 📅 Last update: {last_update}""",
+        # ===== НОВІ ТЕКСТИ =====
+        "random_button": "🎲 Random",
+        "random_no_videos": "❌ No videos available.",
+        "profile_button": "📊 Profile",
+        "profile_header": """📊 <b>Your Profile</b>
+
+👤 Name: {name}
+📅 Registered: {registered}
+👁️ Views: {views}
+⭐ Favorites: {favorites}
+🌟 Ratings given: {ratings}
+💎 Premium: {premium}
+🔗 Referral code: <code>{referral}</code>""",
+        "achievements_button": "🏆 Achievements",
+        "achievements_header": "🏆 <b>Your Achievements</b>\n\n",
+        "achievements_empty": "No achievements yet. Watch videos to unlock them!",
+        "achievement_unlocked": "🏆 New achievement: {name}!",
+        "new_arrivals_button": "📅 New",
+        "new_arrivals_header": "📅 <b>New Arrivals</b>\n\n",
+        "new_arrivals_empty": "No new videos added in the last week.",
+        "playlists_button": "📋 Playlists",
+        "playlists_header": "📋 <b>Your Playlists</b>\n\n",
+        "playlists_empty": "No playlists yet.",
+        "playlist_create": "➕ Create Playlist",
+        "playlist_enter_name": "Enter playlist name (max 100 chars):",
+        "playlist_created": "✅ Playlist '{name}' created!",
+        "playlist_limit": "❌ Max 10 playlists allowed.",
+        "playlist_add_video": "➕ Add to Playlist",
+        "playlist_added": "✅ Added to playlist!",
+        "playlist_item_limit": "❌ Max 50 videos per playlist.",
+        "playlist_already_added": "ℹ️ Video already in this playlist.",
+        "playlist_videos_header": "📋 <b>{name}</b>\n\n",
+        "playlist_empty": "This playlist is empty.",
+        "playlist_select": "Select a playlist:",
+        "playlist_no_playlists": "❌ No playlists. Create one first!",
+        "playlist_delete": "🗑️ Delete Playlist",
+        "playlist_deleted": "✅ Playlist deleted.",
+        "review_button": "💬 Review",
+        "review_enter": "Write your review (max 500 chars):",
+        "review_saved": "✅ Review saved!",
+        "review_already": "ℹ️ You already reviewed this video.",
+        "review_too_long": "❌ Review too long (max 500 chars).",
+        "reviews_header": "💬 <b>Reviews</b>\n\n",
+        "reviews_empty": "No reviews yet.",
+        "review_deleted": "✅ Review deleted.",
+        "qr_button": "📱 QR",
+        "compact_toggle": "📱 Toggle Compact Mode",
+        "compact_enabled": "📱 Compact mode: ON",
+        "compact_disabled": "📱 Compact mode: OFF",
+        "browse_genres_button": "🎭 By Genre",
+        "genres_header": "🎭 <b>Browse by Genre</b>\n\nSelect genre:",
+        "genres_empty": "No genres available.",
+        "genre_videos_header": "🎭 <b>{genre}</b>\n\n",
+        "daily_rec_header": "🔔 Daily Recommendation",
     },
     "ru": {
         "welcome_message": "Добро пожаловать! Отправьте код для видео.",
@@ -432,6 +490,60 @@ You don't have an active subscription.
 ⭐ Премиум пользователей: {premium_users}
 💰 Доход: {revenue} ⭐
 📅 Последнее обновление: {last_update}""",
+        # ===== НОВІ ТЕКСТИ =====
+        "random_button": "🎲 Случайное",
+        "random_no_videos": "❌ Нет доступных видео.",
+        "profile_button": "📊 Профиль",
+        "profile_header": """📊 <b>Ваш Профиль</b>
+
+👤 Имя: {name}
+📅 Регистрация: {registered}
+👁️ Просмотров: {views}
+⭐ Избранных: {favorites}
+🌟 Оценок дано: {ratings}
+💎 Премиум: {premium}
+🔗 Реферальный код: <code>{referral}</code>""",
+        "achievements_button": "🏆 Достижения",
+        "achievements_header": "🏆 <b>Ваши достижения</b>\n\n",
+        "achievements_empty": "Достижений пока нет. Смотрите видео!",
+        "achievement_unlocked": "🏆 Новое достижение: {name}!",
+        "new_arrivals_button": "📅 Новое",
+        "new_arrivals_header": "📅 <b>Новые поступления</b>\n\n",
+        "new_arrivals_empty": "За последнюю неделю новых видео не добавлялось.",
+        "playlists_button": "📋 Плейлисты",
+        "playlists_header": "📋 <b>Ваши плейлисты</b>\n\n",
+        "playlists_empty": "Плейлистов пока нет.",
+        "playlist_create": "➕ Создать плейлист",
+        "playlist_enter_name": "Введите название плейлиста (макс 100 символов):",
+        "playlist_created": "✅ Плейлист '{name}' создан!",
+        "playlist_limit": "❌ Максимум 10 плейлистов.",
+        "playlist_add_video": "➕ В плейлист",
+        "playlist_added": "✅ Добавлено в плейлист!",
+        "playlist_item_limit": "❌ Максимум 50 видео в плейлисте.",
+        "playlist_already_added": "ℹ️ Видео уже в этом плейлисте.",
+        "playlist_videos_header": "📋 <b>{name}</b>\n\n",
+        "playlist_empty": "Плейлист пуст.",
+        "playlist_select": "Выберите плейлист:",
+        "playlist_no_playlists": "❌ Нет плейлистов. Создайте сначала!",
+        "playlist_delete": "🗑️ Удалить плейлист",
+        "playlist_deleted": "✅ Плейлист удалён.",
+        "review_button": "💬 Отзыв",
+        "review_enter": "Напишите отзыв (макс 500 символов):",
+        "review_saved": "✅ Отзыв сохранён!",
+        "review_already": "ℹ️ Вы уже оставляли отзыв на это видео.",
+        "review_too_long": "❌ Отзыв слишком длинный (макс 500 символов).",
+        "reviews_header": "💬 <b>Отзывы</b>\n\n",
+        "reviews_empty": "Отзывов пока нет.",
+        "review_deleted": "✅ Отзыв удалён.",
+        "qr_button": "📱 QR",
+        "compact_toggle": "📱 Компактный режим",
+        "compact_enabled": "📱 Компактный режим: ВКЛ",
+        "compact_disabled": "📱 Компактный режим: ВЫКЛ",
+        "browse_genres_button": "🎭 По жанрам",
+        "genres_header": "🎭 <b>По жанрам</b>\n\nВыберите жанр:",
+        "genres_empty": "Жанры недоступны.",
+        "genre_videos_header": "🎭 <b>{genre}</b>\n\n",
+        "daily_rec_header": "🔔 Ежедневная рекомендация",
     },
     "uk": {
         "welcome_message": "Ласкаво просимо! Надішліть код для отримання відео.",
@@ -602,6 +714,60 @@ You don't have an active subscription.
 ⭐ Преміум користувачів: {premium_users}
 💰 Дохід: {revenue} ⭐
 📅 Останнє оновлення: {last_update}""",
+        # ===== НОВІ ТЕКСТИ =====
+        "random_button": "🎲 Випадкове",
+        "random_no_videos": "❌ Немає доступних відео.",
+        "profile_button": "📊 Профіль",
+        "profile_header": """📊 <b>Ваш Профіль</b>
+
+👤 Ім'я: {name}
+📅 Реєстрація: {registered}
+👁️ Переглядів: {views}
+⭐ Улюблених: {favorites}
+🌟 Оцінок дано: {ratings}
+💎 Преміум: {premium}
+🔗 Реферальний код: <code>{referral}</code>""",
+        "achievements_button": "🏆 Досягнення",
+        "achievements_header": "🏆 <b>Ваші досягнення</b>\n\n",
+        "achievements_empty": "Досягнень поки немає. Дивіться відео!",
+        "achievement_unlocked": "🏆 Нове досягнення: {name}!",
+        "new_arrivals_button": "📅 Нове",
+        "new_arrivals_header": "📅 <b>Нові надходження</b>\n\n",
+        "new_arrivals_empty": "За останній тиждень нових відео не додавали.",
+        "playlists_button": "📋 Плейлісти",
+        "playlists_header": "📋 <b>Ваші плейлісти</b>\n\n",
+        "playlists_empty": "Плейлістів поки немає.",
+        "playlist_create": "➕ Створити плейліст",
+        "playlist_enter_name": "Введіть назву плейлісту (макс 100 символів):",
+        "playlist_created": "✅ Плейліст '{name}' створено!",
+        "playlist_limit": "❌ Максимум 10 плейлістів.",
+        "playlist_add_video": "➕ До плейлісту",
+        "playlist_added": "✅ Додано до плейлісту!",
+        "playlist_item_limit": "❌ Максимум 50 відео у плейлісті.",
+        "playlist_already_added": "ℹ️ Відео вже є у цьому плейлісті.",
+        "playlist_videos_header": "📋 <b>{name}</b>\n\n",
+        "playlist_empty": "Плейліст порожній.",
+        "playlist_select": "Оберіть плейліст:",
+        "playlist_no_playlists": "❌ Немає плейлістів. Спочатку створіть!",
+        "playlist_delete": "🗑️ Видалити плейліст",
+        "playlist_deleted": "✅ Плейліст видалено.",
+        "review_button": "💬 Відгук",
+        "review_enter": "Напишіть відгук (макс 500 символів):",
+        "review_saved": "✅ Відгук збережено!",
+        "review_already": "ℹ️ Ви вже залишали відгук на це відео.",
+        "review_too_long": "❌ Відгук занадто довгий (макс 500 символів).",
+        "reviews_header": "💬 <b>Відгуки</b>\n\n",
+        "reviews_empty": "Відгуків поки немає.",
+        "review_deleted": "✅ Відгук видалено.",
+        "qr_button": "📱 QR",
+        "compact_toggle": "📱 Компактний режим",
+        "compact_enabled": "📱 Компактний режим: УВІМК",
+        "compact_disabled": "📱 Компактний режим: ВИМК",
+        "browse_genres_button": "🎭 По жанрах",
+        "genres_header": "🎭 <b>По жанрах</b>\n\nОберіть жанр:",
+        "genres_empty": "Жанри недоступні.",
+        "genre_videos_header": "🎭 <b>{genre}</b>\n\n",
+        "daily_rec_header": "🔔 Щоденна рекомендація",
     }
 }
 
@@ -634,6 +800,9 @@ class UserState(StatesGroup):
     waiting_for_promo_code = State()
     waiting_for_broadcast_message = State()
     waiting_for_rating = State()
+    # Нові стани для нових функцій
+    waiting_for_playlist_name = State()
+    waiting_for_review = State()
 
 # ==================== ДОПОМІЖНІ ФУНКЦІЇ ====================
 
@@ -851,6 +1020,14 @@ def get_user_keyboard(user_id: int) -> ReplyKeyboardMarkup:
             KeyboardButton(text=get_text(user_id, "premium_button")),
             KeyboardButton(text=get_text(user_id, "my_subscription_button"))
         ],
+        [
+            KeyboardButton(text=get_text(user_id, "random_button")),
+            KeyboardButton(text=get_text(user_id, "new_arrivals_button"))
+        ],
+        [
+            KeyboardButton(text=get_text(user_id, "profile_button")),
+            KeyboardButton(text=get_text(user_id, "playlists_button"))
+        ],
     ], resize_keyboard=True)
 
 def get_admin_keyboard(user_id: int) -> ReplyKeyboardMarkup:
@@ -911,6 +1088,10 @@ def get_browse_keyboard(user_id: int) -> InlineKeyboardMarkup:
             text=get_text(user_id, "category_anime"),
             callback_data="browse_anime"
         )],
+        [InlineKeyboardButton(
+            text=get_text(user_id, "browse_genres_button"),
+            callback_data="browse_genres"
+        )],
     ])
 
 def get_rating_keyboard(video_code: str) -> InlineKeyboardMarkup:
@@ -926,7 +1107,7 @@ def get_rating_keyboard(video_code: str) -> InlineKeyboardMarkup:
     ])
 
 async def get_video_action_keyboard(user_id: int, video_code: str, series_name: str = None) -> InlineKeyboardMarkup:
-    """Клавіатура дій з відео (улюблене, рейтинг, підписка)"""
+    """Клавіатура дій з відео (улюблене, рейтинг, підписка, відгук, QR, плейліст)"""
     buttons = []
     
     # Перевірити чи в улюбленому
@@ -958,6 +1139,24 @@ async def get_video_action_keyboard(user_id: int, video_code: str, series_name: 
             text=get_text(user_id, "subscribe_to_series"),
             callback_data=f"sub_{series_name}"
         )])
+    
+    # Відгук
+    buttons.append([InlineKeyboardButton(
+        text=get_text(user_id, "review_button"),
+        callback_data=f"review_{video_code}"
+    )])
+    
+    # До плейлісту
+    buttons.append([InlineKeyboardButton(
+        text=get_text(user_id, "playlist_add_video"),
+        callback_data=f"playlist_add_{video_code}"
+    )])
+    
+    # QR-код
+    buttons.append([InlineKeyboardButton(
+        text=get_text(user_id, "qr_button"),
+        callback_data=f"qr_{video_code}"
+    )])
     
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -1363,6 +1562,26 @@ async def handle_text_input(message: Message, state: FSMContext):
         await show_subscription_status(message, user_id)
         return
     
+    # Випадкове відео
+    if text in ["🎲 Випадкове", "🎲 Случайное", "🎲 Random"]:
+        await show_random_video(message, user_id)
+        return
+    
+    # Профіль
+    if text in ["📊 Профіль", "📊 Профиль", "📊 Profile"]:
+        await show_user_profile(message, user_id)
+        return
+    
+    # Нові надходження
+    if text in ["📅 Нове", "📅 Новое", "📅 New"]:
+        await show_new_arrivals(message, user_id)
+        return
+    
+    # Плейлісти
+    if text in ["📋 Плейлісти", "📋 Плейлисты", "📋 Playlists"]:
+        await show_playlists(message, user_id)
+        return
+    
     # ============ ПЕРЕВІРКА КОДУ ВІДЕО (В КІНЦІ!) ============
     
     # Валідація коду
@@ -1692,6 +1911,241 @@ async def show_analytics(message: Message, user_id: int):
     
     await message.answer(msg)
     log_admin_action(user_id, "ANALYTICS_VIEWED")
+
+# ==================== ДОСЯГНЕННЯ ====================
+
+# Словник досягнень
+ACHIEVEMENT_DEFINITIONS = {
+    "cinephile":   {"emoji": "🎬", "name_uk": "Кіноман",     "name_ru": "Киноман",      "name_en": "Cinephile"},
+    "critic":      {"emoji": "⭐", "name_uk": "Критик",       "name_ru": "Критик",       "name_en": "Critic"},
+    "reviewer":    {"emoji": "💬", "name_uk": "Рецензент",    "name_ru": "Рецензент",    "name_en": "Reviewer"},
+    "collector":   {"emoji": "❤️", "name_uk": "Колекціонер",  "name_ru": "Коллекционер", "name_en": "Collector"},
+    "ambassador":  {"emoji": "👥", "name_uk": "Амбасадор",    "name_ru": "Амбассадор",   "name_en": "Ambassador"},
+    "marathoner":  {"emoji": "🔥", "name_uk": "Марафонець",   "name_ru": "Марафонец",    "name_en": "Marathoner"},
+    "vip":         {"emoji": "💎", "name_uk": "VIP",          "name_ru": "VIP",          "name_en": "VIP"},
+}
+
+async def check_achievements(user_id: int):
+    """Перевірка та видача нових досягнень після дій"""
+    async with async_session_maker() as session:
+        # Отримати вже видані досягнення
+        result = await session.execute(
+            select(Achievement.achievement_type).where(Achievement.user_id == user_id)
+        )
+        unlocked = {row[0] for row in result.all()}
+
+        # Підрахувати переглянуті відео
+        result = await session.execute(
+            select(func.count(ViewHistory.id)).where(ViewHistory.user_id == user_id)
+        )
+        views_count = result.scalar() or 0
+
+        # Підрахувати оцінки
+        result = await session.execute(
+            select(func.count(Rating.id)).where(Rating.user_id == user_id)
+        )
+        ratings_count = result.scalar() or 0
+
+        # Підрахувати відгуки
+        result = await session.execute(
+            select(func.count(Review.id)).where(Review.user_id == user_id)
+        )
+        reviews_count = result.scalar() or 0
+
+        # Підрахувати улюблені
+        result = await session.execute(
+            select(func.count(Favorite.id)).where(Favorite.user_id == user_id)
+        )
+        favorites_count = result.scalar() or 0
+
+        # Підрахувати рефералів
+        result = await session.execute(
+            select(func.count(User.id)).where(User.referred_by == user_id)
+        )
+        referrals_count = result.scalar() or 0
+
+        # Преміум статус
+        result = await session.execute(
+            select(User.is_premium).where(User.telegram_id == user_id)
+        )
+        is_premium_val = result.scalar_one_or_none() or False
+
+        # Правила досягнень
+        conditions = {
+            "cinephile":  views_count >= 10,
+            "critic":     ratings_count >= 5,
+            "reviewer":   reviews_count >= 3,
+            "collector":  favorites_count >= 10,
+            "ambassador": referrals_count >= 3,
+            "marathoner": views_count >= 50,
+            "vip":        is_premium_val,
+        }
+
+        new_achievements = []
+        for ach_type, condition in conditions.items():
+            if condition and ach_type not in unlocked:
+                ach = Achievement(user_id=user_id, achievement_type=ach_type)
+                session.add(ach)
+                new_achievements.append(ach_type)
+
+        if new_achievements:
+            await session.commit()
+
+    return new_achievements
+
+async def notify_achievements(message: Message, user_id: int):
+    """Повідомити про нові досягнення"""
+    new_achievements = await check_achievements(user_id)
+    lang = user_languages_cache.get(user_id, "en")
+
+    for ach_type in new_achievements:
+        ach_info = ACHIEVEMENT_DEFINITIONS.get(ach_type, {})
+        emoji = ach_info.get("emoji", "🏆")
+        if lang == "uk":
+            name = ach_info.get("name_uk", ach_type)
+        elif lang == "ru":
+            name = ach_info.get("name_ru", ach_type)
+        else:
+            name = ach_info.get("name_en", ach_type)
+        await message.answer(
+            get_text(user_id, "achievement_unlocked", name=f"{emoji} {name}")
+        )
+        logger.info(f"User {user_id} unlocked achievement: {ach_type}")
+
+# ==================== НОВІ ФУНКЦІЇ ====================
+
+async def show_random_video(message: Message, user_id: int):
+    """Показати випадкове відео"""
+    is_premium = await is_premium_user(user_id)
+    is_admin_user = await is_admin(user_id)
+
+    async with async_session_maker() as session:
+        query = select(Video).order_by(func.random()).limit(1)
+        if not is_premium and not is_admin_user:
+            query = query.where(Video.is_premium == False)
+        result = await session.execute(query)
+        video = result.scalar_one_or_none()
+
+    if not video:
+        await message.answer(get_text(user_id, "random_no_videos"))
+        return
+
+    await send_video_to_user(message, user_id, video)
+    logger.info(f"User {user_id} requested random video: {video.code}")
+
+async def show_user_profile(message: Message, user_id: int):
+    """Показати профіль користувача"""
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(User).where(User.telegram_id == user_id)
+        )
+        user = result.scalar_one_or_none()
+        if not user:
+            return
+
+        result = await session.execute(
+            select(func.count(ViewHistory.id)).where(ViewHistory.user_id == user_id)
+        )
+        views_count = result.scalar() or 0
+
+        result = await session.execute(
+            select(func.count(Favorite.id)).where(Favorite.user_id == user_id)
+        )
+        favorites_count = result.scalar() or 0
+
+        result = await session.execute(
+            select(func.count(Rating.id)).where(Rating.user_id == user_id)
+        )
+        ratings_count = result.scalar() or 0
+
+    lang = user.language or "en"
+    if user.is_premium and user.premium_expires and user.premium_expires > datetime.utcnow():
+        if lang == "uk":
+            premium_status = f"✅ до {user.premium_expires.strftime('%Y-%m-%d')}"
+        elif lang == "ru":
+            premium_status = f"✅ до {user.premium_expires.strftime('%Y-%m-%d')}"
+        else:
+            premium_status = f"✅ until {user.premium_expires.strftime('%Y-%m-%d')}"
+    else:
+        premium_status = "❌"
+
+    msg = get_text(user_id, "profile_header",
+        name=user.first_name or user.username or str(user_id),
+        registered=user.created_at.strftime("%Y-%m-%d"),
+        views=views_count,
+        favorites=favorites_count,
+        ratings=ratings_count,
+        premium=premium_status,
+        referral=user.referral_code or "—"
+    )
+
+    # Кнопки профілю: досягнення та компактний режим
+    compact_label = get_text(user_id, "compact_toggle")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text=get_text(user_id, "achievements_button"), callback_data="show_achievements")],
+        [InlineKeyboardButton(text=compact_label, callback_data="toggle_compact")],
+    ])
+
+    await message.answer(msg, reply_markup=kb)
+    logger.info(f"User {user_id} viewed profile")
+
+async def show_new_arrivals(message: Message, user_id: int):
+    """Показати нові надходження за останній тиждень"""
+    cutoff = datetime.utcnow() - timedelta(days=7)
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Video)
+            .where(Video.created_at >= cutoff)
+            .order_by(Video.created_at.desc())
+            .limit(15)
+        )
+        videos = result.scalars().all()
+
+    if not videos:
+        await message.answer(get_text(user_id, "new_arrivals_empty"))
+        return
+
+    msg = get_text(user_id, "new_arrivals_header")
+    for video in videos:
+        premium_mark = " ⭐" if video.is_premium else ""
+        rating_mark = f" ({round(video.avg_rating, 1)}⭐)" if video.ratings_count > 0 else ""
+        if video.is_series:
+            msg += f"📺 {video.title or 'Untitled'} S{video.season}E{video.episode}\n"
+        else:
+            msg += f"🎬 {video.title or 'Untitled'}\n"
+        msg += f"<code>{video.code}</code>{premium_mark}{rating_mark}\n\n"
+
+    await message.answer(msg)
+    logger.info(f"User {user_id} viewed new arrivals")
+
+async def show_playlists(message: Message, user_id: int):
+    """Показати плейлісти користувача"""
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Playlist).where(Playlist.user_id == user_id).order_by(Playlist.created_at.desc())
+        )
+        playlists = result.scalars().all()
+
+    if not playlists:
+        await message.answer(
+            get_text(user_id, "playlists_empty"),
+            reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text=get_text(user_id, "playlist_create"), callback_data="playlist_create")]
+            ])
+        )
+        return
+
+    msg = get_text(user_id, "playlists_header")
+    buttons = []
+    for pl in playlists:
+        msg += f"📋 <b>{pl.name}</b> ({pl.created_at.strftime('%Y-%m-%d')})\n"
+        buttons.append([
+            InlineKeyboardButton(text=f"▶️ {pl.name}", callback_data=f"playlist_view_{pl.id}"),
+            InlineKeyboardButton(text="🗑️", callback_data=f"playlist_del_{pl.id}"),
+        ])
+
+    buttons.append([InlineKeyboardButton(text=get_text(user_id, "playlist_create"), callback_data="playlist_create")])
+    await message.answer(msg, reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons))
 
 async def show_all_videos(message: Message, user_id: int, page: int = 1):
     """Показати список всіх відео з пагінацією"""
@@ -2395,6 +2849,19 @@ async def handle_favorite_toggle(callback: CallbackQuery):
     
     if added:
         await callback.answer(get_text(user_id, "added_to_favorites"))
+        # Перевірка досягнення "Колекціонер"
+        new_ach = await check_achievements(user_id)
+        for ach_type in new_ach:
+            ach_info = ACHIEVEMENT_DEFINITIONS.get(ach_type, {})
+            lang = user_languages_cache.get(user_id, "en")
+            emoji = ach_info.get("emoji", "🏆")
+            if lang == "uk":
+                name = ach_info.get("name_uk", ach_type)
+            elif lang == "ru":
+                name = ach_info.get("name_ru", ach_type)
+            else:
+                name = ach_info.get("name_en", ach_type)
+            await callback.message.answer(get_text(user_id, "achievement_unlocked", name=f"{emoji} {name}"))
     else:
         await callback.answer(get_text(user_id, "removed_from_favorites"))
     
@@ -2437,6 +2904,367 @@ async def handle_series_subscription(callback: CallbackQuery):
         await callback.answer(get_text(user_id, "unsubscribed_from_series", series=series_name))
     
     logger.info(f"User {user_id} subscription to {series_name}: {subscribed}")
+
+@dp.callback_query(F.data == "browse_genres")
+async def handle_browse_genres(callback: CallbackQuery):
+    """Перегляд по жанрах"""
+    user_id = callback.from_user.id
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Video.genre).where(Video.genre != None).distinct().limit(10)
+        )
+        genres = [row[0] for row in result.all() if row[0]]
+
+    if not genres:
+        await callback.answer(get_text(user_id, "genres_empty"))
+        return
+
+    buttons = [
+        [InlineKeyboardButton(text=f"🎭 {g}", callback_data=f"genre_{i}")]
+        for i, g in enumerate(genres)
+    ]
+    # Зберегти genres у стані (не потрібно — передаємо список через callback_data з індексом)
+    # Зберегти список жанрів у тимчасовому кеші (використаємо user_languages_cache для простоти)
+    _genre_cache[user_id] = genres
+    await callback.message.edit_text(
+        get_text(user_id, "genres_header"),
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons)
+    )
+
+@dp.callback_query(F.data.startswith("genre_"))
+async def handle_genre_browse(callback: CallbackQuery):
+    """Перегляд відео за жанром"""
+    user_id = callback.from_user.id
+    genre_idx_str = callback.data[6:]
+
+    # Отримати жанр з кешу або з DB якщо немає
+    genre = None
+    cached_genres = _genre_cache.get(user_id)
+    if cached_genres and genre_idx_str.isdigit():
+        idx = int(genre_idx_str)
+        if 0 <= idx < len(cached_genres):
+            genre = cached_genres[idx]
+
+    if not genre:
+        await callback.answer("❌")
+        return
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Video).where(Video.genre.ilike(f"%{genre}%"))
+            .order_by(Video.avg_rating.desc(), Video.views_count.desc())
+            .limit(20)
+        )
+        videos = result.scalars().all()
+
+    if not videos:
+        await callback.answer("❌")
+        return
+
+    msg = get_text(user_id, "genre_videos_header", genre=genre)
+    for video in videos:
+        premium_mark = " ⭐" if video.is_premium else ""
+        rating_mark = f" ({round(video.avg_rating, 1)}⭐)" if video.ratings_count > 0 else ""
+        if video.is_series:
+            msg += f"📺 {video.title or 'Untitled'} S{video.season}E{video.episode}\n"
+        else:
+            msg += f"🎬 {video.title or 'Untitled'}\n"
+        msg += f"<code>{video.code}</code>{premium_mark}{rating_mark}\n\n"
+
+    await callback.message.edit_text(msg)
+
+@dp.callback_query(F.data == "show_achievements")
+async def handle_show_achievements(callback: CallbackQuery):
+    """Показати досягнення користувача"""
+    user_id = callback.from_user.id
+    lang = user_languages_cache.get(user_id, "en")
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Achievement).where(Achievement.user_id == user_id)
+        )
+        achievements = result.scalars().all()
+
+    if not achievements:
+        await callback.answer(get_text(user_id, "achievements_empty"), show_alert=True)
+        return
+
+    msg = get_text(user_id, "achievements_header")
+    for ach in achievements:
+        ach_info = ACHIEVEMENT_DEFINITIONS.get(ach.achievement_type, {})
+        emoji = ach_info.get("emoji", "🏆")
+        if lang == "uk":
+            name = ach_info.get("name_uk", ach.achievement_type)
+        elif lang == "ru":
+            name = ach_info.get("name_ru", ach.achievement_type)
+        else:
+            name = ach_info.get("name_en", ach.achievement_type)
+        msg += f"{emoji} <b>{name}</b> — {ach.unlocked_at.strftime('%Y-%m-%d')}\n"
+
+    await callback.message.answer(msg)
+    await callback.answer()
+
+@dp.callback_query(F.data == "toggle_compact")
+async def handle_toggle_compact(callback: CallbackQuery):
+    """Переключити компактний режим"""
+    user_id = callback.from_user.id
+
+    async with async_session_maker() as session:
+        result = await session.execute(select(User).where(User.telegram_id == user_id))
+        user = result.scalar_one_or_none()
+        if not user:
+            await callback.answer()
+            return
+        user.compact_mode = not user.compact_mode
+        compact = user.compact_mode
+        await session.commit()
+
+    if compact:
+        await callback.answer(get_text(user_id, "compact_enabled"), show_alert=True)
+    else:
+        await callback.answer(get_text(user_id, "compact_disabled"), show_alert=True)
+    logger.info(f"User {user_id} toggled compact mode: {compact}")
+
+@dp.callback_query(F.data.startswith("review_"))
+async def handle_review_action(callback: CallbackQuery, state: FSMContext):
+    """Обробник відгуків на відео"""
+    parts = callback.data.split("_", 2)
+    user_id = callback.from_user.id
+
+    if parts[1] == "del" and len(parts) == 3:
+        # Видалення відгуку (адмін)
+        if not await is_admin(user_id):
+            await callback.answer("❌")
+            return
+        review_id = int(parts[2])
+        async with async_session_maker() as session:
+            result = await session.execute(select(Review).where(Review.id == review_id))
+            review = result.scalar_one_or_none()
+            if review:
+                await session.delete(review)
+                await session.commit()
+        await callback.answer(get_text(user_id, "review_deleted"))
+        log_admin_action(user_id, "REVIEW_DELETED", str(review_id))
+        return
+
+    # Показати відгуки або почати написання
+    video_code = parts[1]
+
+    # Показати останні 5 відгуків та запропонувати написати
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Review).where(Review.video_code == video_code)
+            .order_by(Review.created_at.desc()).limit(5)
+        )
+        reviews = result.scalars().all()
+
+    if reviews:
+        msg = get_text(user_id, "reviews_header")
+        for rev in reviews:
+            msg += f"💬 <code>{rev.user_id}</code>: {rev.text}\n"
+            if await is_admin(user_id):
+                msg += f"[🗑️ /del_review_{rev.id}]\n"
+            msg += "\n"
+        await callback.message.answer(msg)
+
+    # Запросити написати відгук
+    await callback.message.answer(
+        get_text(user_id, "review_enter"),
+        reply_markup=get_cancel_keyboard(user_id)
+    )
+    await state.update_data(review_video_code=video_code)
+    await state.set_state(UserState.waiting_for_review)
+    await callback.answer()
+
+@dp.callback_query(F.data == "playlist_create")
+async def handle_playlist_create(callback: CallbackQuery, state: FSMContext):
+    """Створити новий плейліст"""
+    user_id = callback.from_user.id
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(func.count(Playlist.id)).where(Playlist.user_id == user_id)
+        )
+        count = result.scalar() or 0
+
+    if count >= 10:
+        await callback.answer(get_text(user_id, "playlist_limit"), show_alert=True)
+        return
+
+    await callback.message.answer(
+        get_text(user_id, "playlist_enter_name"),
+        reply_markup=get_cancel_keyboard(user_id)
+    )
+    await state.set_state(UserState.waiting_for_playlist_name)
+    await callback.answer()
+
+@dp.callback_query(F.data.startswith("playlist_view_"))
+async def handle_playlist_view(callback: CallbackQuery):
+    """Переглянути відео в плейлісті"""
+    playlist_id = int(callback.data.split("_")[2])
+    user_id = callback.from_user.id
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Playlist).where(Playlist.id == playlist_id, Playlist.user_id == user_id)
+        )
+        playlist = result.scalar_one_or_none()
+        if not playlist:
+            await callback.answer("❌")
+            return
+
+        result = await session.execute(
+            select(Video).join(PlaylistItem, PlaylistItem.video_code == Video.code)
+            .where(PlaylistItem.playlist_id == playlist_id)
+            .order_by(PlaylistItem.added_at.desc())
+        )
+        videos = result.scalars().all()
+
+    if not videos:
+        await callback.answer(get_text(user_id, "playlist_empty"), show_alert=True)
+        return
+
+    msg = get_text(user_id, "playlist_videos_header", name=playlist.name)
+    for video in videos:
+        premium_mark = " ⭐" if video.is_premium else ""
+        if video.is_series:
+            msg += f"📺 {video.title or 'Untitled'} S{video.season}E{video.episode}\n"
+        else:
+            msg += f"🎬 {video.title or 'Untitled'}\n"
+        msg += f"<code>{video.code}</code>{premium_mark}\n\n"
+
+    await callback.message.answer(msg)
+    await callback.answer()
+
+@dp.callback_query(F.data.startswith("playlist_del_"))
+async def handle_playlist_delete(callback: CallbackQuery):
+    """Видалити плейліст"""
+    playlist_id = int(callback.data.split("_")[2])
+    user_id = callback.from_user.id
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Playlist).where(Playlist.id == playlist_id, Playlist.user_id == user_id)
+        )
+        playlist = result.scalar_one_or_none()
+        if not playlist:
+            await callback.answer("❌")
+            return
+        # Видалити елементи плейлісту
+        await session.execute(
+            sa_delete(PlaylistItem).where(PlaylistItem.playlist_id == playlist_id)
+        )
+        await session.delete(playlist)
+        await session.commit()
+
+    await callback.answer(get_text(user_id, "playlist_deleted"))
+    logger.info(f"User {user_id} deleted playlist {playlist_id}")
+
+@dp.callback_query(F.data.startswith("playlist_add_"))
+async def handle_playlist_add_video(callback: CallbackQuery):
+    """Показати список плейлістів для додавання відео"""
+    video_code = callback.data[len("playlist_add_"):]
+    user_id = callback.from_user.id
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Playlist).where(Playlist.user_id == user_id).order_by(Playlist.created_at.desc())
+        )
+        playlists = result.scalars().all()
+
+    if not playlists:
+        await callback.answer(get_text(user_id, "playlist_no_playlists"), show_alert=True)
+        return
+
+    buttons = [
+        [InlineKeyboardButton(text=pl.name, callback_data=f"playlist_addto_{pl.id}_{video_code}")]
+        for pl in playlists
+    ]
+    await callback.message.answer(
+        get_text(user_id, "playlist_select"),
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=buttons)
+    )
+    await callback.answer()
+
+@dp.callback_query(F.data.startswith("playlist_addto_"))
+async def handle_playlist_addto(callback: CallbackQuery):
+    """Додати відео до вибраного плейлісту"""
+    parts = callback.data.split("_")
+    playlist_id = int(parts[2])
+    video_code = parts[3]
+    user_id = callback.from_user.id
+
+    async with async_session_maker() as session:
+        # Перевірити що плейліст належить користувачу
+        result = await session.execute(
+            select(Playlist).where(Playlist.id == playlist_id, Playlist.user_id == user_id)
+        )
+        playlist = result.scalar_one_or_none()
+        if not playlist:
+            await callback.answer("❌")
+            return
+
+        # Перевірити кількість відео
+        result = await session.execute(
+            select(func.count(PlaylistItem.id)).where(PlaylistItem.playlist_id == playlist_id)
+        )
+        count = result.scalar() or 0
+        if count >= 50:
+            await callback.answer(get_text(user_id, "playlist_item_limit"), show_alert=True)
+            return
+
+        # Перевірити чи вже є
+        result = await session.execute(
+            select(PlaylistItem).where(
+                PlaylistItem.playlist_id == playlist_id,
+                PlaylistItem.video_code == video_code
+            )
+        )
+        existing = result.scalar_one_or_none()
+        if existing:
+            await callback.answer(get_text(user_id, "playlist_already_added"), show_alert=True)
+            return
+
+        item = PlaylistItem(playlist_id=playlist_id, video_code=video_code)
+        session.add(item)
+        await session.commit()
+
+    await callback.answer(get_text(user_id, "playlist_added"))
+    logger.info(f"User {user_id} added {video_code} to playlist {playlist_id}")
+
+@dp.callback_query(F.data.startswith("qr_"))
+async def handle_qr_code(callback: CallbackQuery):
+    """Генерувати QR-код для відео"""
+    video_code = callback.data[3:]
+    user_id = callback.from_user.id
+
+    try:
+        import qrcode
+        import io
+
+        bot_info = await bot.get_me()
+        link = f"https://t.me/{bot_info.username}?start=video_{video_code}"
+
+        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+        qr.add_data(link)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+
+        buf = io.BytesIO()
+        img.save(buf, format="PNG")
+        buf.seek(0)
+
+        from aiogram.types import BufferedInputFile
+        await callback.message.answer_photo(
+            BufferedInputFile(buf.read(), filename=f"qr_{video_code}.png"),
+            caption=f"📱 QR: <code>{link}</code>"
+        )
+        await callback.answer()
+        logger.info(f"User {user_id} generated QR for video {video_code}")
+    except Exception as e:
+        logger.error(f"QR code generation error: {e}")
+        await callback.answer("❌ QR error", show_alert=True)
 
 @dp.callback_query(F.data.startswith("browse_"))
 async def handle_browse_category(callback: CallbackQuery):
@@ -2733,37 +3561,66 @@ async def send_video_to_user(message: Message, user_id: int, video: Video):
     # Додати в історію
     await add_to_history(user_id, video.code)
     
+    # Перевірити compact_mode
+    compact = False
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(User.compact_mode).where(User.telegram_id == user_id)
+        )
+        compact_val = result.scalar_one_or_none()
+        if compact_val:
+            compact = True
+    
     # Сформувати інформацію про відео
     msg_text = ""
     
-    if video.title:
-        if video.is_series:
-            msg_text = get_text(user_id, "episode_info",
-                title=video.title,
-                season=video.season or "?",
-                episode=video.episode or "?"
+    if compact:
+        # Компактний режим: тільки назва + код + рейтинг
+        if video.title:
+            if video.is_series:
+                msg_text = get_text(user_id, "episode_info",
+                    title=video.title,
+                    season=video.season or "?",
+                    episode=video.episode or "?"
+                )
+            else:
+                msg_text = get_text(user_id, "movie_info", title=video.title)
+        if RATINGS_ENABLED and video.ratings_count > 0:
+            msg_text += get_text(user_id, "rating_info",
+                rating=round(video.avg_rating, 1),
+                count=video.ratings_count
             )
-        else:
-            msg_text = get_text(user_id, "movie_info", title=video.title)
-    
-    if video.year:
-        msg_text += get_text(user_id, "year_info", year=video.year)
-    if video.genre:
-        msg_text += get_text(user_id, "genre_info", genre=video.genre)
-    if video.description:
-        msg_text += get_text(user_id, "description_info", description=video.description)
-    
-    msg_text += get_text(user_id, "views_info", views=video.views_count)
-    
-    # Додати рейтинг
-    if RATINGS_ENABLED and video.ratings_count > 0:
-        msg_text += get_text(user_id, "rating_info",
-            rating=round(video.avg_rating, 1),
-            count=video.ratings_count
-        )
-    
-    if video.is_premium:
-        msg_text += get_text(user_id, "premium_badge")
+        if video.is_premium:
+            msg_text += get_text(user_id, "premium_badge")
+    else:
+        if video.title:
+            if video.is_series:
+                msg_text = get_text(user_id, "episode_info",
+                    title=video.title,
+                    season=video.season or "?",
+                    episode=video.episode or "?"
+                )
+            else:
+                msg_text = get_text(user_id, "movie_info", title=video.title)
+        
+        if video.year:
+            msg_text += get_text(user_id, "year_info", year=video.year)
+        if video.genre:
+            msg_text += get_text(user_id, "genre_info", genre=video.genre)
+        if video.description:
+            msg_text += get_text(user_id, "description_info", description=video.description)
+        
+        msg_text += get_text(user_id, "views_info", views=video.views_count)
+        
+        # Додати рейтинг
+        if RATINGS_ENABLED and video.ratings_count > 0:
+            msg_text += get_text(user_id, "rating_info",
+                rating=round(video.avg_rating, 1),
+                count=video.ratings_count
+            )
+        
+        if video.is_premium:
+            msg_text += get_text(user_id, "premium_badge")
     
     # Відправити текст
     if msg_text:
@@ -2787,13 +3644,16 @@ async def send_video_to_user(message: Message, user_id: int, video: Video):
         await message.answer("❌ Помилка при відправці відео. Спробуйте пізніше.")
         return
     
-    # Кнопки дій (улюблене, рейтинг, підписка)
+    # Кнопки дій (улюблене, рейтинг, підписка, відгук, QR, плейліст)
     action_kb = await get_video_action_keyboard(user_id, video.code, video.series_name)
     await message.answer("━━━━━━━━━━━━━━", reply_markup=action_kb)
     
     # Рекомендації
     if RECOMMENDATIONS_ENABLED:
         await show_recommendations(message, user_id, video.code)
+    
+    # Перевірка досягнень
+    await notify_achievements(message, user_id)
     
     logger.info(f"User {user_id} viewed video: {video.code} (premium: {video.is_premium})")
 
@@ -3132,6 +3992,155 @@ async def handle_list_admins(message: Message):
     await message.answer(msg)
     log_admin_action(user_id, "ADMINS_LIST_VIEWED")
 
+# ==================== ОБРОБНИКИ НОВИХ СТАНІВ ====================
+
+@dp.message(UserState.waiting_for_playlist_name, F.text)
+async def handle_playlist_name(message: Message, state: FSMContext):
+    """Обробник назви плейлісту"""
+    user_id = message.from_user.id
+
+    if await check_cancel(message, state, user_id):
+        return
+
+    if not check_rate_limit(user_id):
+        await message.answer(get_text(user_id, "rate_limit"))
+        return
+
+    name = input_validator.sanitize_html(message.text.strip())[:100]
+
+    async with async_session_maker() as session:
+        count_result = await session.execute(
+            select(func.count(Playlist.id)).where(Playlist.user_id == user_id)
+        )
+        count = count_result.scalar() or 0
+        if count >= 10:
+            await message.answer(get_text(user_id, "playlist_limit"))
+            await state.set_state(UserState.waiting_for_code)
+            return
+
+        playlist = Playlist(user_id=user_id, name=name)
+        session.add(playlist)
+        await session.commit()
+
+    await message.answer(
+        get_text(user_id, "playlist_created", name=name),
+        reply_markup=get_user_keyboard(user_id)
+    )
+    await state.set_state(UserState.waiting_for_code)
+    logger.info(f"User {user_id} created playlist: {name}")
+
+@dp.message(UserState.waiting_for_review, F.text)
+async def handle_review_text(message: Message, state: FSMContext):
+    """Обробник тексту відгуку"""
+    user_id = message.from_user.id
+
+    if await check_cancel(message, state, user_id):
+        return
+
+    if not check_rate_limit(user_id):
+        await message.answer(get_text(user_id, "rate_limit"))
+        return
+
+    text = input_validator.sanitize_html(message.text.strip())
+
+    if len(text) > 500:
+        await message.answer(get_text(user_id, "review_too_long"))
+        return
+
+    user_data = await state.get_data()
+    video_code = user_data.get("review_video_code")
+
+    if not video_code:
+        await state.set_state(UserState.waiting_for_code)
+        return
+
+    async with async_session_maker() as session:
+        # Перевірити чи вже є відгук
+        result = await session.execute(
+            select(Review).where(Review.user_id == user_id, Review.video_code == video_code)
+        )
+        existing = result.scalar_one_or_none()
+        if existing:
+            await message.answer(
+                get_text(user_id, "review_already"),
+                reply_markup=get_user_keyboard(user_id)
+            )
+            await state.set_state(UserState.waiting_for_code)
+            return
+
+        review = Review(user_id=user_id, video_code=video_code, text=text)
+        session.add(review)
+        await session.commit()
+
+    await message.answer(
+        get_text(user_id, "review_saved"),
+        reply_markup=get_user_keyboard(user_id)
+    )
+    await state.set_state(UserState.waiting_for_code)
+
+    # Перевірка досягнень
+    await notify_achievements(message, user_id)
+    logger.info(f"User {user_id} wrote review for video {video_code}")
+
+# ==================== ЩОДЕННІ РЕКОМЕНДАЦІЇ ====================
+
+async def daily_recommendations_task():
+    """Фонове завдання щоденних рекомендацій"""
+    while True:
+        try:
+            now = datetime.utcnow()
+            target_hour = DAILY_RECOMMENDATIONS_HOUR
+            next_run = now.replace(hour=target_hour, minute=0, second=0, microsecond=0)
+            if now >= next_run:
+                next_run += timedelta(days=1)
+            wait_seconds = (next_run - now).total_seconds()
+            logger.info(f"Daily recommendations: next run in {wait_seconds:.0f}s")
+            await asyncio.sleep(wait_seconds)
+
+            # Вибрати популярне відео
+            async with async_session_maker() as session:
+                result = await session.execute(
+                    select(Video)
+                    .where(Video.views_count > 0, Video.avg_rating > 3)
+                    .order_by(func.random())
+                    .limit(1)
+                )
+                video = result.scalar_one_or_none()
+
+                if not video:
+                    continue
+
+                # Отримати активних користувачів (активні за останні 7 днів)
+                cutoff = datetime.utcnow() - timedelta(days=7)
+                result = await session.execute(
+                    select(User.telegram_id, User.language)
+                    .where(User.last_active >= cutoff)
+                )
+                active_users = result.all()
+
+            for telegram_id, lang in active_users:
+                try:
+                    lang_key = lang or "en"
+                    texts_lang = TEXTS.get(lang_key, TEXTS["en"])
+                    premium_mark = " ⭐" if video.is_premium else ""
+                    rec_header = texts_lang.get("daily_rec_header", "🔔")
+                    msg = f"{rec_header}\n"
+                    if video.title:
+                        msg += f"🎬 {video.title}\n"
+                    msg += f"<code>{video.code}</code>{premium_mark}"
+                    await bot.send_message(telegram_id, msg)
+                    await asyncio.sleep(0.05)
+                except Exception:
+                    pass
+
+            logger.info(f"Daily recommendations sent to {len(active_users)} users (video: {video.code})")
+
+        except asyncio.CancelledError:
+            break
+        except Exception as e:
+            logger.error(f"Daily recommendations task error: {e}")
+            await asyncio.sleep(3600)
+
 async def ensure_primary_admin():
     """Гарантує, що ADMIN_ID існує в БД і має статус адміна."""
     try:
@@ -3184,6 +4193,11 @@ except Exception as e:
     if CACHE_ENABLED:
         asyncio.create_task(cache_cleanup_task())
         logger.info("✅ Cache cleanup task started")
+    
+    # Запуск щоденних рекомендацій
+    if DAILY_RECOMMENDATIONS_ENABLED:
+        asyncio.create_task(daily_recommendations_task())
+        logger.info("✅ Daily recommendations task started")
     
     me = await bot.get_me()
     logger.info(f"✅ Started as @{me.username}")

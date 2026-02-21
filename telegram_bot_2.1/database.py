@@ -5,7 +5,7 @@
 from contextlib import asynccontextmanager
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import String, Integer, Boolean, DateTime, Float, ForeignKey, Text, select, func, delete
+from sqlalchemy import String, Integer, Boolean, DateTime, Float, ForeignKey, Text, select, func, delete, UniqueConstraint
 from datetime import datetime, timedelta
 from typing import Optional, List
 import json
@@ -37,6 +37,7 @@ class User(Base):
     last_active: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     referral_code: Mapped[Optional[str]] = mapped_column(String(20), unique=True, nullable=True)
     referred_by: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
+    compact_mode: Mapped[bool] = mapped_column(Boolean, default=False)
     
     # Relationships
     history: Mapped[List["ViewHistory"]] = relationship(back_populates="user", cascade="all, delete-orphan")
@@ -163,6 +164,41 @@ class Payment(Base):
     telegram_payment_charge_id: Mapped[str] = mapped_column(String(255))
     status: Mapped[str] = mapped_column(String(50), default="completed")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)
+
+class Playlist(Base):
+    __tablename__ = "playlists"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(Integer, index=True)
+    name: Mapped[str] = mapped_column(String(100))
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+class PlaylistItem(Base):
+    __tablename__ = "playlist_items"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    playlist_id: Mapped[int] = mapped_column(ForeignKey("playlists.id", ondelete="CASCADE"))
+    video_code: Mapped[str] = mapped_column(ForeignKey("videos.code", ondelete="CASCADE"))
+    added_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+class Review(Base):
+    __tablename__ = "reviews"
+    __table_args__ = (UniqueConstraint("user_id", "video_code", name="uix_review_user_video"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(Integer, index=True)
+    video_code: Mapped[str] = mapped_column(ForeignKey("videos.code", ondelete="CASCADE"))
+    text: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+class Achievement(Base):
+    __tablename__ = "achievements"
+    __table_args__ = (UniqueConstraint("user_id", "achievement_type", name="uix_achievement_user_type"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(Integer, index=True)
+    achievement_type: Mapped[str] = mapped_column(String(50))
+    unlocked_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
 # ==================== ФУНКЦІЇ БД ====================
 
