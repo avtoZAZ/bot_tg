@@ -4171,24 +4171,7 @@ async def main():
     await init_db()
     await ensure_primary_admin()
     logger.info("✅ Database initialized")
-    # Гарантируем, что ADMIN_ID есть в БД и отмечен как админ
-try:
-    async with async_session_maker() as session:
-        result = await session.execute(select(User).where(User.telegram_id == ADMIN_ID))
-        admin_user = result.scalar_one_or_none()
-        if admin_user:
-            if not admin_user.is_admin:
-                admin_user.is_admin = True
-                await session.commit()
-                logger.info(f"✅ User {ADMIN_ID} promoted to admin")
-        else:
-            new_admin = User(telegram_id=ADMIN_ID, language="en", is_admin=True)
-            session.add(new_admin)
-            await session.commit()
-            logger.info(f"✅ Admin user {ADMIN_ID} created")
-except Exception as e:
-    logger.error(f"Failed to ensure ADMIN_ID admin: {e}")
-    
+
     # Запуск фонового завдання очистки кешу
     if CACHE_ENABLED:
         asyncio.create_task(cache_cleanup_task())
