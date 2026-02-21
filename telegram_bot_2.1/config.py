@@ -125,6 +125,10 @@ PREMIUM_PLANS = {
     }
 }
 
+# ==================== ЩОДЕННІ РЕКОМЕНДАЦІЇ ====================
+DAILY_RECOMMENDATIONS_ENABLED = os.getenv("DAILY_RECOMMENDATIONS_ENABLED", "True").lower() == "true"
+DAILY_RECOMMENDATIONS_HOUR = int(os.getenv("DAILY_RECOMMENDATIONS_HOUR", "12"))
+
 # ==================== ЛОГИ ====================
 
 LOGS_DIR = "logs"
