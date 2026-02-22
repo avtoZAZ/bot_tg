@@ -37,7 +37,8 @@ from config import (
     REFERRAL_ENABLED, PROMO_CODES_ENABLED, SERIES_NOTIFICATIONS_ENABLED,
     RATINGS_ENABLED, ANALYTICS_ENABLED, SAVE_SEARCH_QUERIES, TRACK_AD_CLICKS,
     ALLOWED_DOMAINS, VALIDATE_AD_URLS, LOG_SENSITIVE_DATA, PREMIUM_PLANS,
-    TOP_WEEKLY_LIMIT, LOGS_DIR, DAILY_RECOMMENDATIONS_ENABLED, DAILY_RECOMMENDATIONS_HOUR
+    TOP_WEEKLY_LIMIT, LOGS_DIR, DAILY_RECOMMENDATIONS_ENABLED, DAILY_RECOMMENDATIONS_HOUR,
+    AI_SEARCH_ENABLED, AI_SEARCH_API_KEY
 )
 
 from database import (
@@ -320,6 +321,12 @@ You don't have an active subscription.
         "genres_empty": "No genres available.",
         "genre_videos_header": "🎭 <b>{genre}</b>\n\n",
         "daily_rec_header": "🔔 Daily Recommendation",
+        "ai_search_button": "🤖 AI Search",
+        "ai_search_prompt": "🤖 <b>AI Search</b>\n\nDescribe what you're looking for (movie title, genre, year, mood, etc.):",
+        "ai_search_premium_only": "🤖 AI Search is available for <b>Premium</b> subscribers only.\n\n⭐ Upgrade to Premium to unlock AI-powered search!",
+        "ai_search_processing": "⏳ Processing your request...",
+        "ai_search_no_results": "🤖 AI Search couldn't find anything matching your request. Try a different description.",
+        "ai_search_voice_prompt": "🎤 Voice search coming soon! Please type your request instead.",
     },
     "ru": {
         "welcome_message": "Добро пожаловать! Отправьте код для видео.",
@@ -544,6 +551,12 @@ You don't have an active subscription.
         "genres_empty": "Жанры недоступны.",
         "genre_videos_header": "🎭 <b>{genre}</b>\n\n",
         "daily_rec_header": "🔔 Ежедневная рекомендация",
+        "ai_search_button": "🤖 AI Поиск",
+        "ai_search_prompt": "🤖 <b>AI Поиск</b>\n\nОпишите, что вы ищете (название, жанр, год, настроение и т.д.):",
+        "ai_search_premium_only": "🤖 AI Поиск доступен только для подписчиков <b>Премиум</b>.\n\n⭐ Оформите Премиум для доступа к AI поиску!",
+        "ai_search_processing": "⏳ Обрабатываю запрос...",
+        "ai_search_no_results": "🤖 AI Поиск не нашёл ничего по вашему запросу. Попробуйте другое описание.",
+        "ai_search_voice_prompt": "🎤 Голосовой поиск скоро появится! Пожалуйста, введите запрос текстом.",
     },
     "uk": {
         "welcome_message": "Ласкаво просимо! Надішліть код для отримання відео.",
@@ -768,6 +781,12 @@ You don't have an active subscription.
         "genres_empty": "Жанри недоступні.",
         "genre_videos_header": "🎭 <b>{genre}</b>\n\n",
         "daily_rec_header": "🔔 Щоденна рекомендація",
+        "ai_search_button": "🤖 AI Пошук",
+        "ai_search_prompt": "🤖 <b>AI Пошук</b>\n\nОпишіть, що ви шукаєте (назва, жанр, рік, настрій тощо):",
+        "ai_search_premium_only": "🤖 AI Пошук доступний лише для підписників <b>Преміум</b>.\n\n⭐ Оформіть Преміум для доступу до AI пошуку!",
+        "ai_search_processing": "⏳ Обробляю запит...",
+        "ai_search_no_results": "🤖 AI Пошук не знайшов нічого за вашим запитом. Спробуйте інший опис.",
+        "ai_search_voice_prompt": "🎤 Голосовий пошук незабаром! Будь ласка, введіть запит текстом.",
     }
 }
 
@@ -803,6 +822,7 @@ class UserState(StatesGroup):
     # Нові стани для нових функцій
     waiting_for_playlist_name = State()
     waiting_for_review = State()
+    waiting_for_ai_search = State()
 
 # ==================== ДОПОМІЖНІ ФУНКЦІЇ ====================
 
@@ -1028,6 +1048,9 @@ def get_user_keyboard(user_id: int) -> ReplyKeyboardMarkup:
             KeyboardButton(text=get_text(user_id, "profile_button")),
             KeyboardButton(text=get_text(user_id, "playlists_button"))
         ],
+        [
+            KeyboardButton(text=get_text(user_id, "ai_search_button"))
+        ],
     ], resize_keyboard=True)
 
 def get_admin_keyboard(user_id: int) -> ReplyKeyboardMarkup:
@@ -1057,6 +1080,9 @@ def get_admin_keyboard(user_id: int) -> ReplyKeyboardMarkup:
         [
             KeyboardButton(text="⭐ Видати преміум"),
             KeyboardButton(text=get_text(user_id, "export_db_button"))
+        ],
+        [
+            KeyboardButton(text=get_text(user_id, "ai_search_button"))
         ],
     ], resize_keyboard=True)
 
@@ -1404,6 +1430,15 @@ async def handle_text_input(message: Message, state: FSMContext):
     
     text = input_validator.sanitize_html(message.text.strip())
     
+    # ============ КНОПКА "СКАСУВАТИ" (safety net) ============
+    if text in ["❌ Скасувати", "❌ Отменить", "❌ Cancel", "/cancel"]:
+        if await is_admin(user_id):
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
+        else:
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
+        await state.set_state(UserState.waiting_for_code)
+        return
+    
     # ============ КНОПКА "НАЗАД" ============
     if text in ["◀️ Назад", "◀️ Back", "◀️ Вернуться", "/back"]:
         await state.clear()
@@ -1580,6 +1615,19 @@ async def handle_text_input(message: Message, state: FSMContext):
     # Плейлісти
     if text in ["📋 Плейлісти", "📋 Плейлисты", "📋 Playlists"]:
         await show_playlists(message, user_id)
+        return
+    
+    # AI Пошук
+    if text in ["🤖 AI Пошук", "🤖 AI Поиск", "🤖 AI Search"]:
+        is_premium = await is_premium_user(user_id)
+        if not is_premium and not is_admin_user:
+            await message.answer(get_text(user_id, "ai_search_premium_only"))
+            return
+        await message.answer(
+            get_text(user_id, "ai_search_prompt"),
+            reply_markup=get_cancel_keyboard(user_id)
+        )
+        await state.set_state(UserState.waiting_for_ai_search)
         return
     
     # ============ ПЕРЕВІРКА КОДУ ВІДЕО (В КІНЦІ!) ============
@@ -2281,7 +2329,10 @@ async def handle_search(message: Message, state: FSMContext):
             await log_search_query(user_id, query, results_count)
     
     if not accessible_videos:
-        await message.answer(get_text(user_id, "no_results"))
+        if is_admin_user:
+            await message.answer(get_text(user_id, "no_results"), reply_markup=get_admin_keyboard(user_id))
+        else:
+            await message.answer(get_text(user_id, "no_results"), reply_markup=get_user_keyboard(user_id))
         await state.set_state(UserState.waiting_for_code)
         return
     
@@ -2309,6 +2360,105 @@ async def handle_search(message: Message, state: FSMContext):
     await message.answer(msg)
     logger.info(f"User {user_id} searched: '{query}' - {results_count} results")
     
+    await state.set_state(UserState.waiting_for_code)
+
+# ==================== AI ПОШУК (ПРЕМІУМ) ====================
+
+@dp.message(UserState.waiting_for_ai_search, F.voice)
+async def handle_ai_search_voice(message: Message, state: FSMContext):
+    """Обробник голосового повідомлення для AI пошуку"""
+    user_id = message.from_user.id
+
+    if not check_rate_limit(user_id):
+        await message.answer(get_text(user_id, "rate_limit"))
+        return
+
+    # TODO: integrate Whisper API for voice transcription when AI_SEARCH_API_KEY is configured
+    await message.answer(get_text(user_id, "ai_search_voice_prompt"))
+
+
+@dp.message(UserState.waiting_for_ai_search, F.text)
+async def handle_ai_search_text(message: Message, state: FSMContext):
+    """Обробник текстового запиту для AI пошуку (fuzzy/smart search)"""
+    user_id = message.from_user.id
+
+    if await check_cancel(message, state, user_id):
+        return
+
+    if not check_rate_limit(user_id):
+        await message.answer(get_text(user_id, "rate_limit"))
+        return
+
+    query = input_validator.sanitize_html(message.text.strip().lower())
+
+    await message.answer(get_text(user_id, "ai_search_processing"))
+
+    # Smart/fuzzy search: split query into keywords and match against title,
+    # genre, year, description using OR conditions for each keyword
+    keywords = [kw for kw in query.split() if len(kw) >= 2]
+    if not keywords:
+        keywords = [query]
+
+    conditions = []
+    for kw in keywords:
+        conditions.extend([
+            Video.title.ilike(f"%{kw}%"),
+            Video.genre.ilike(f"%{kw}%"),
+            Video.year.ilike(f"%{kw}%"),
+            Video.description.ilike(f"%{kw}%"),
+        ])
+
+    is_premium = await is_premium_user(user_id)
+    is_admin_user = await is_admin(user_id)
+
+    async with async_session_maker() as session:
+        result = await session.execute(
+            select(Video)
+            .where(or_(*conditions))
+            .order_by(Video.avg_rating.desc(), Video.views_count.desc())
+            .limit(10)
+        )
+        videos = result.scalars().all()
+
+        accessible_videos = []
+        for video in videos:
+            if video.is_premium:
+                if is_premium or is_admin_user:
+                    accessible_videos.append(video)
+            else:
+                accessible_videos.append(video)
+
+    if not accessible_videos:
+        if is_admin_user:
+            await message.answer(get_text(user_id, "ai_search_no_results"), reply_markup=get_admin_keyboard(user_id))
+        else:
+            await message.answer(get_text(user_id, "ai_search_no_results"), reply_markup=get_user_keyboard(user_id))
+        await state.set_state(UserState.waiting_for_code)
+        return
+
+    msg = get_text(user_id, "search_results")
+    for video in accessible_videos:
+        premium_mark = " ⭐" if video.is_premium else ""
+        rating_mark = f" ({round(video.avg_rating, 1)}⭐)" if video.ratings_count > 0 else ""
+
+        if video.is_series:
+            msg += f"📺 S{video.season}E{video.episode} {video.title or 'Untitled'}\n"
+        else:
+            msg += f"🎬 {video.title or 'Untitled'}\n"
+
+        if video.genre:
+            msg += f"🎭 {video.genre}"
+        if video.year:
+            msg += f" | 📅 {video.year}"
+
+        msg += f"\n<code>{video.code}</code> (👁️ {video.views_count}){premium_mark}{rating_mark}\n\n"
+
+    if is_admin_user:
+        await message.answer(msg, reply_markup=get_admin_keyboard(user_id))
+    else:
+        await message.answer(msg, reply_markup=get_user_keyboard(user_id))
+
+    logger.info(f"User {user_id} AI searched: '{query}' - {len(accessible_videos)} results")
     await state.set_state(UserState.waiting_for_code)
 
 # ==================== ЗАВАНТАЖЕННЯ ВІДЕО (АДМІН) ====================
