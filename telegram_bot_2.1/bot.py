@@ -1423,6 +1423,31 @@ async def handle_language_selection(callback: CallbackQuery, state: FSMContext):
 async def handle_text_input(message: Message, state: FSMContext):
     """Обробник текстового вводу (коди, кнопки, команди)"""
     user_id = message.from_user.id
+    text_raw = (message.text or "").strip()
+
+    # ============ КНОПКА "СКАСУВАТИ" (обробляємо ДО anti-spam/rate-limit) ============
+    # Інакше швидкі повторні натискання можуть потрапляти під spam protection
+    # і бот перестає відповідати на скасування.
+    if text_raw in ["❌ Скасувати", "❌ Отменить", "❌ Cancel", "/cancel"]:
+        if await is_admin(user_id):
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
+        else:
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
+        await state.set_state(UserState.waiting_for_code)
+        return
+
+    # ============ КНОПКА "НАЗАД" (також ДО anti-spam/rate-limit) ============
+    if text_raw in ["◀️ Назад", "◀️ Back", "◀️ Вернуться", "/back"]:
+        await state.clear()
+
+        # Повернутися до головного меню
+        if await is_admin(user_id):
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
+        else:
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
+
+        await state.set_state(UserState.waiting_for_code)
+        return
     
     # Rate limit
     if not check_rate_limit(user_id):
@@ -1434,30 +1459,8 @@ async def handle_text_input(message: Message, state: FSMContext):
         security_logger.log_suspicious_activity(user_id, "SPAM_DETECTED", message.text[:50])
         rate_limiter.block_user(user_id, BLOCK_TIME)
         return
-    
-    text = input_validator.sanitize_html(message.text.strip())
-    
-    # ============ КНОПКА "СКАСУВАТИ" (safety net) ============
-    if text in ["❌ Скасувати", "❌ Отменить", "❌ Cancel", "/cancel"]:
-        if await is_admin(user_id):
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
-        else:
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
-        await state.set_state(UserState.waiting_for_code)
-        return
-    
-    # ============ КНОПКА "НАЗАД" ============
-    if text in ["◀️ Назад", "◀️ Back", "◀️ Вернуться", "/back"]:
-        await state.clear()
-        
-        # Повернутися до головного меню
-        if await is_admin(user_id):
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
-        else:
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
-        
-        await state.set_state(UserState.waiting_for_code)
-        return
+
+    text = input_validator.sanitize_html(text_raw)
     
     # ============ АДМІНСЬКІ КОМАНДИ (ПЕРЕВІРЯЄМО СПОЧАТКУ!) ============
     
@@ -1520,7 +1523,7 @@ async def handle_text_input(message: Message, state: FSMContext):
             return
         
         # Промокоди
-        if text in ["🎫 Промокоди", "🎫 Promo Codes"]:
+        if text in ["🎫 Промокоди", "🎫 Промокоды", "🎫 Promo Codes"]:
             await message.answer(
                 "🎫 Промокоди:",
                 reply_markup=get_promo_keyboard(user_id)
