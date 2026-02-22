@@ -129,6 +129,10 @@ PREMIUM_PLANS = {
 DAILY_RECOMMENDATIONS_ENABLED = os.getenv("DAILY_RECOMMENDATIONS_ENABLED", "True").lower() == "true"
 DAILY_RECOMMENDATIONS_HOUR = int(os.getenv("DAILY_RECOMMENDATIONS_HOUR", "12"))
 
+# ==================== AI ПОШУК ====================
+AI_SEARCH_ENABLED = os.getenv("AI_SEARCH_ENABLED", "True").lower() == "true"
+AI_SEARCH_API_KEY = os.getenv("AI_SEARCH_API_KEY", "")  # OpenAI API key (optional)
+
 # ==================== ЛОГИ ====================
 
 LOGS_DIR = "logs"
