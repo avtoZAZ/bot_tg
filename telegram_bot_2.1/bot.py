@@ -17,7 +17,7 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.types import (
     Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton,
     InlineKeyboardMarkup, InlineKeyboardButton, TelegramObject,
-    LabeledPrice, PreCheckoutQuery, InputFile
+    LabeledPrice, PreCheckoutQuery, FSInputFile
 )
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
@@ -865,6 +865,10 @@ async def is_premium_user(user_id: int) -> bool:
 
 async def is_admin(user_id: int) -> bool:
     """Перевірити чи користувач адмін"""
+    # Головний адмін із конфіга має доступ навіть якщо запис ще не створено в БД
+    if user_id == ADMIN_ID:
+        return True
+
     async with async_session_maker() as session:
         result = await session.execute(
             select(User.is_admin).where(User.telegram_id == user_id)
@@ -973,8 +977,8 @@ async def show_ad(message: Message, user_id: int):
                         updated_text,
                         reply_markup=keyboard
                     )
-            except:
-                pass
+            except Exception as edit_error:
+                logger.debug(f"Unable to update ad timer message: {edit_error}")
         
         await asyncio.sleep(1)
         
@@ -1419,6 +1423,31 @@ async def handle_language_selection(callback: CallbackQuery, state: FSMContext):
 async def handle_text_input(message: Message, state: FSMContext):
     """Обробник текстового вводу (коди, кнопки, команди)"""
     user_id = message.from_user.id
+    text_raw = (message.text or "").strip()
+
+    # ============ КНОПКА "СКАСУВАТИ" (обробляємо ДО anti-spam/rate-limit) ============
+    # Інакше швидкі повторні натискання можуть потрапляти під spam protection
+    # і бот перестає відповідати на скасування.
+    if text_raw in ["❌ Скасувати", "❌ Отменить", "❌ Cancel", "/cancel"]:
+        if await is_admin(user_id):
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
+        else:
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
+        await state.set_state(UserState.waiting_for_code)
+        return
+
+    # ============ КНОПКА "НАЗАД" (також ДО anti-spam/rate-limit) ============
+    if text_raw in ["◀️ Назад", "◀️ Back", "◀️ Вернуться", "/back"]:
+        await state.clear()
+
+        # Повернутися до головного меню
+        if await is_admin(user_id):
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
+        else:
+            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
+
+        await state.set_state(UserState.waiting_for_code)
+        return
     
     # Rate limit
     if not check_rate_limit(user_id):
@@ -1430,30 +1459,8 @@ async def handle_text_input(message: Message, state: FSMContext):
         security_logger.log_suspicious_activity(user_id, "SPAM_DETECTED", message.text[:50])
         rate_limiter.block_user(user_id, BLOCK_TIME)
         return
-    
-    text = input_validator.sanitize_html(message.text.strip())
-    
-    # ============ КНОПКА "СКАСУВАТИ" (safety net) ============
-    if text in ["❌ Скасувати", "❌ Отменить", "❌ Cancel", "/cancel"]:
-        if await is_admin(user_id):
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
-        else:
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
-        await state.set_state(UserState.waiting_for_code)
-        return
-    
-    # ============ КНОПКА "НАЗАД" ============
-    if text in ["◀️ Назад", "◀️ Back", "◀️ Вернуться", "/back"]:
-        await state.clear()
-        
-        # Повернутися до головного меню
-        if await is_admin(user_id):
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_admin_keyboard(user_id))
-        else:
-            await message.answer(get_text(user_id, "action_cancelled"), reply_markup=get_user_keyboard(user_id))
-        
-        await state.set_state(UserState.waiting_for_code)
-        return
+
+    text = input_validator.sanitize_html(text_raw)
     
     # ============ АДМІНСЬКІ КОМАНДИ (ПЕРЕВІРЯЄМО СПОЧАТКУ!) ============
     
@@ -1516,7 +1523,7 @@ async def handle_text_input(message: Message, state: FSMContext):
             return
         
         # Промокоди
-        if text in ["🎫 Промокоди", "🎫 Promo Codes"]:
+        if text in ["🎫 Промокоди", "🎫 Промокоды", "🎫 Promo Codes"]:
             await message.answer(
                 "🎫 Промокоди:",
                 reply_markup=get_promo_keyboard(user_id)
@@ -2956,7 +2963,16 @@ async def process_successful_payment(message: Message):
     payment_info = message.successful_payment
     
     payload_parts = payment_info.invoice_payload.split("_")
+    if len(payload_parts) < 3 or payload_parts[0] != "premium":
+        logger.error(f"Invalid payment payload for user {user_id}: {payment_info.invoice_payload}")
+        await message.answer("❌ Помилка обробки платежу. Зверніться в підтримку.")
+        return
+
     plan = payload_parts[1]
+    if plan not in PREMIUM_PLANS:
+        logger.error(f"Unknown premium plan in payload for user {user_id}: {plan}")
+        await message.answer("❌ Невідомий тариф у платежі. Зверніться в підтримку.")
+        return
     
     logger.info(f"Payment received: User {user_id}, Plan {plan}, Amount {payment_info.total_amount} Stars")
     
@@ -2967,43 +2983,47 @@ async def process_successful_payment(message: Message):
         )
         user = result.scalar_one_or_none()
         
-        if user:
-            duration_days = PREMIUM_PLANS[plan]["duration_days"]
-            
-            if user.is_premium and user.premium_expires and user.premium_expires > datetime.utcnow():
-                # Продовжити існуючий
-                user.premium_expires += timedelta(days=duration_days)
-            else:
-                # Новий преміум
-                user.is_premium = True
-                user.premium_expires = datetime.utcnow() + timedelta(days=duration_days)
-                user.premium_plan = plan
-            
-            expires = user.premium_expires
-            
-            # Зберегти платіж
-            payment = Payment(
-                user_id=user_id,
-                plan=plan,
-                amount=payment_info.total_amount,
-                currency="XTR",
-                telegram_payment_charge_id=payment_info.telegram_payment_charge_id,
-                status="completed"
-            )
-            session.add(payment)
-            
-            await session.commit()
-            
-            # Нагородити реферера
-            if REFERRAL_ENABLED:
-                await referral_system.reward_referrer_on_payment(user_id)
-            
-            await message.answer(
-                get_text(user_id, "premium_purchased",
-                    expires=expires.strftime("%Y-%m-%d %H:%M"))
-            )
-            
-            premium_logger.info(f"Payment completed: User {user_id}, Plan {plan}, Amount {payment_info.total_amount} Stars")
+        if not user:
+            user = User(telegram_id=user_id, language=user_languages_cache.get(user_id, "uk"))
+            session.add(user)
+            await session.flush()
+
+        duration_days = PREMIUM_PLANS[plan]["duration_days"]
+
+        if user.is_premium and user.premium_expires and user.premium_expires > datetime.utcnow():
+            # Продовжити існуючий
+            user.premium_expires += timedelta(days=duration_days)
+        else:
+            # Новий преміум
+            user.is_premium = True
+            user.premium_expires = datetime.utcnow() + timedelta(days=duration_days)
+
+        user.premium_plan = plan
+        expires = user.premium_expires
+
+        # Зберегти платіж
+        payment = Payment(
+            user_id=user_id,
+            plan=plan,
+            amount=payment_info.total_amount,
+            currency="XTR",
+            telegram_payment_charge_id=payment_info.telegram_payment_charge_id,
+            status="completed"
+        )
+        session.add(payment)
+
+        await session.commit()
+
+        # Нагородити реферера
+        if REFERRAL_ENABLED:
+            await referral_system.reward_referrer_on_payment(user_id)
+
+        await message.answer(
+            get_text(user_id, "premium_purchased",
+                expires=expires.strftime("%Y-%m-%d %H:%M"))
+        )
+
+        premium_logger.info(f"Payment completed: User {user_id}, Plan {plan}, Amount {payment_info.total_amount} Stars")
 
 @dp.callback_query(F.data.startswith("fav_"))
 async def handle_favorite_toggle(callback: CallbackQuery):
@@ -3796,8 +3816,8 @@ async def send_video_to_user(message: Message, user_id: int, video: Video):
     if video.poster_file_id:
         try:
             await bot.send_photo(message.chat.id, video.poster_file_id)
-        except:
-            pass
+        except Exception as poster_error:
+            logger.debug(f"Unable to send poster for video {video.code}: {poster_error}")
     
     # ПОКАЗАТИ РЕКЛАМУ
     await show_ad(message, user_id)
@@ -4091,8 +4111,8 @@ async def handle_grant_premium_choice(message: Message, state: FSMContext):
             target_user_id,
             f"🎉 Вітаємо! Вам видано Преміум підписку!\n\n⏰ Тривалість: {days} днів\n📅 Діє до: {expires}\n\n✨ Користуйтесь без реклами!"
         )
-    except:
-        pass
+    except Exception as notify_error:
+        logger.warning(f"Could not notify user {target_user_id} about premium grant: {notify_error}")
 
     log_admin_action(user_id, "PREMIUM_GRANTED", f"{target_user_id} - {days} days")
     await message.answer("✅ Готово!", reply_markup=get_admin_keyboard(user_id))
@@ -4116,7 +4136,7 @@ async def handle_export_db(message: Message):
         return
     
     try:
-        document = InputFile(db_file)
+        document = FSInputFile(db_file)
         await message.answer_document(
             document=document,
             caption=f"📤 Експорт бази даних\n📅 {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC"
