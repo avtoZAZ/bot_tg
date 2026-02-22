@@ -108,6 +108,7 @@ TEXTS = {
         "edit_video_button": "✏️ Edit Metadata",
         "list_videos_button": "📝 All Videos",
         "list_admins_button": "👥 Admins List",
+        "grant_premium_button": "⭐ Grant Premium",
         "export_db_button": "📤 Export DB",
         "list_series_button": "📺 Series List",
         "analytics_button": "📊 Analytics",
@@ -338,6 +339,7 @@ You don't have an active subscription.
         "edit_video_button": "✏️ Редактировать",
         "list_videos_button": "📝 Все видео",
         "list_admins_button": "👥 Список админов",
+        "grant_premium_button": "⭐ Выдать премиум",
         "export_db_button": "📤 Экспорт БД",
         "list_series_button": "📺 Список сериалов",
         "analytics_button": "📊 Аналитика",
@@ -568,6 +570,7 @@ You don't have an active subscription.
         "edit_video_button": "✏️ Редагувати",
         "list_videos_button": "📝 Всі відео",
         "list_admins_button": "👥 Список адмінів",
+        "grant_premium_button": "⭐ Видати преміум",
         "export_db_button": "📤 Експорт БД",
         "list_series_button": "📺 Список серіалів",
         "analytics_button": "📊 Аналітика",
@@ -1078,7 +1081,7 @@ def get_admin_keyboard(user_id: int) -> ReplyKeyboardMarkup:
             KeyboardButton(text=get_text(user_id, "add_admin_button"))
         ],
         [
-            KeyboardButton(text="⭐ Видати преміум"),
+            KeyboardButton(text=get_text(user_id, "grant_premium_button")),
             KeyboardButton(text=get_text(user_id, "export_db_button"))
         ],
         [
@@ -2500,6 +2503,19 @@ async def handle_video_upload(message: Message, state: FSMContext):
     await state.set_state(UserState.waiting_for_video_language)
     
     log_admin_action(user_id, "VIDEO_UPLOAD_STARTED", f"Size: {file_size_mb:.1f} MB")
+
+@dp.message(UserState.waiting_for_video, F.text)
+async def handle_video_text(message: Message, state: FSMContext):
+    """Handle text messages in video upload state (cancel support)"""
+    user_id = message.from_user.id
+
+    if await check_cancel(message, state, user_id):
+        return
+
+    await message.answer(
+        get_text(user_id, "send_video_prompt"),
+        reply_markup=get_cancel_keyboard(user_id)
+    )
 
 @dp.callback_query(F.data.startswith("vlang_"), UserState.waiting_for_video_language)
 async def handle_video_language(callback: CallbackQuery, state: FSMContext):
